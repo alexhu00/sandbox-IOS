@@ -10,6 +10,8 @@ import UIKit
 
 class ShopViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
    
+    // MARK: Functions
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         <#code#>
     }
