@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A239EDC324A900DB0093EC69 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239EDC224A900DB0093EC69 /* CreateAccountViewController.swift */; };
+		A239EDC624A90F690093EC69 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239EDC524A90F690093EC69 /* LoginViewController.swift */; };
 		A27CB3A324A3BA1C00BB3005 /* AppletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CB3A224A3BA1C00BB3005 /* AppletTableViewCell.swift */; };
 		A2EE4F0924A6742C0086E455 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EE4F0824A6742C0086E455 /* ShopViewController.swift */; };
 		A2F3978D24A13B25008F3607 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F3978C24A13B25008F3607 /* AppDelegate.swift */; };
@@ -55,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A239EDC224A900DB0093EC69 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		A239EDC524A90F690093EC69 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A27CB3A224A3BA1C00BB3005 /* AppletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppletTableViewCell.swift; sourceTree = "<group>"; };
 		A2EE4F0824A6742C0086E455 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		A2F3978924A13B25008F3607 /* sandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +118,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A239EDC424A900E00093EC69 /* 5. Create Account */ = {
+			isa = PBXGroup;
+			children = (
+				A239EDC224A900DB0093EC69 /* CreateAccountViewController.swift */,
+			);
+			path = "5. Create Account";
+			sourceTree = "<group>";
+		};
 		A2E2CE4D24A3CCE700EFD31D /* 3. Vessel Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,7 +214,9 @@
 				A2E2CE5024A3CDA000EFD31D /* 2. Continue Screen */,
 				A2E2CE4D24A3CCE700EFD31D /* 3. Vessel Home */,
 				A2E2CE5324A3CE0B00EFD31D /* 4. Settings Page */,
+				A239EDC424A900E00093EC69 /* 5. Create Account */,
 				A2EE4F0A24A6743E0086E455 /* 6. Add to Cart */,
+				A239EDC524A90F690093EC69 /* LoginViewController.swift */,
 				A2F3979524A13B2C008F3607 /* Assets.xcassets */,
 				A2F3979224A13B25008F3607 /* Main.storyboard */,
 				A2F3979724A13B2C008F3607 /* LaunchScreen.storyboard */,
@@ -377,9 +391,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A239EDC624A90F690093EC69 /* LoginViewController.swift in Sources */,
 				A27CB3A324A3BA1C00BB3005 /* AppletTableViewCell.swift in Sources */,
 				A2F397F724A1C0FD008F3607 /* VesselViewController.swift in Sources */,
 				A2EE4F0924A6742C0086E455 /* ShopViewController.swift in Sources */,
+				A239EDC324A900DB0093EC69 /* CreateAccountViewController.swift in Sources */,
 				A2F3979124A13B25008F3607 /* ViewController.swift in Sources */,
 				A2F3978D24A13B25008F3607 /* AppDelegate.swift in Sources */,
 				A2F3978F24A13B25008F3607 /* SceneDelegate.swift in Sources */,

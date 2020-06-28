@@ -6,20 +6,22 @@
 //  Copyright © 2020 Alex  Hu. All rights reserved.
 //
 
+/*
 import UIKit
 
 class ShopViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
    
     // MARK: Functions
-    
+
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        
     }
-    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,3 +58,6 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     */
 
 }
+
+ 
+ */
