@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		A239EDC324A900DB0093EC69 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239EDC224A900DB0093EC69 /* CreateAccountViewController.swift */; };
 		A239EDC624A90F690093EC69 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239EDC524A90F690093EC69 /* LoginViewController.swift */; };
+		A239EDC824AA4F350093EC69 /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239EDC724AA4F350093EC69 /* SuccessViewController.swift */; };
+		A239EDCB24AA78DD0093EC69 /* ItemsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239EDC924AA78DD0093EC69 /* ItemsCollectionViewCell.swift */; };
+		A239EDCC24AA78DD0093EC69 /* ItemsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A239EDCA24AA78DD0093EC69 /* ItemsCollectionViewCell.xib */; };
+		A239EDCE24AA8D1E0093EC69 /* SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239EDCD24AA8D1E0093EC69 /* SliderViewController.swift */; };
+		A239EDD424AA9EA80093EC69 /* VolumeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239EDD324AA9EA80093EC69 /* VolumeTableViewCell.swift */; };
+		A239EDD824AA9F630093EC69 /* BrightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239EDD724AA9F630093EC69 /* BrightTableViewCell.swift */; };
+		A239EDDD24AB9E750093EC69 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239EDDC24AB9E750093EC69 /* CameraViewController.swift */; };
 		A27CB3A324A3BA1C00BB3005 /* AppletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CB3A224A3BA1C00BB3005 /* AppletTableViewCell.swift */; };
 		A2EE4F0924A6742C0086E455 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EE4F0824A6742C0086E455 /* ShopViewController.swift */; };
 		A2F3978D24A13B25008F3607 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F3978C24A13B25008F3607 /* AppDelegate.swift */; };
@@ -59,6 +66,13 @@
 /* Begin PBXFileReference section */
 		A239EDC224A900DB0093EC69 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		A239EDC524A90F690093EC69 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A239EDC724AA4F350093EC69 /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
+		A239EDC924AA78DD0093EC69 /* ItemsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsCollectionViewCell.swift; sourceTree = "<group>"; };
+		A239EDCA24AA78DD0093EC69 /* ItemsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemsCollectionViewCell.xib; sourceTree = "<group>"; };
+		A239EDCD24AA8D1E0093EC69 /* SliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderViewController.swift; sourceTree = "<group>"; };
+		A239EDD324AA9EA80093EC69 /* VolumeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeTableViewCell.swift; sourceTree = "<group>"; };
+		A239EDD724AA9F630093EC69 /* BrightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightTableViewCell.swift; sourceTree = "<group>"; };
+		A239EDDC24AB9E750093EC69 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		A27CB3A224A3BA1C00BB3005 /* AppletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppletTableViewCell.swift; sourceTree = "<group>"; };
 		A2EE4F0824A6742C0086E455 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		A2F3978924A13B25008F3607 /* sandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,12 +132,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A239EDC424A900E00093EC69 /* 5. Create Account */ = {
+		A239EDC424A900E00093EC69 /* 1. Create Account */ = {
 			isa = PBXGroup;
 			children = (
 				A239EDC224A900DB0093EC69 /* CreateAccountViewController.swift */,
+				A239EDC524A90F690093EC69 /* LoginViewController.swift */,
+				A239EDC724AA4F350093EC69 /* SuccessViewController.swift */,
 			);
-			path = "5. Create Account";
+			path = "1. Create Account";
+			sourceTree = "<group>";
+		};
+		A239EDD924AB9CCB0093EC69 /* 2. Sliders */ = {
+			isa = PBXGroup;
+			children = (
+				A239EDCD24AA8D1E0093EC69 /* SliderViewController.swift */,
+				A239EDD324AA9EA80093EC69 /* VolumeTableViewCell.swift */,
+				A239EDD724AA9F630093EC69 /* BrightTableViewCell.swift */,
+			);
+			path = "2. Sliders";
+			sourceTree = "<group>";
+		};
+		A239EDDA24AB9CE50093EC69 /* Vessel */ = {
+			isa = PBXGroup;
+			children = (
+				A2E2CE4F24A3CD2D00EFD31D /* 1. Loading Screen */,
+				A2E2CE5024A3CDA000EFD31D /* 2. Continue Screen */,
+				A2E2CE4D24A3CCE700EFD31D /* 3. Vessel Home */,
+				A2E2CE5324A3CE0B00EFD31D /* 4. Settings Page */,
+			);
+			path = Vessel;
+			sourceTree = "<group>";
+		};
+		A239EDDB24AB9D1A0093EC69 /* Applets */ = {
+			isa = PBXGroup;
+			children = (
+				A239EDC424A900E00093EC69 /* 1. Create Account */,
+				A239EDD924AB9CCB0093EC69 /* 2. Sliders */,
+				A2EE4F0A24A6743E0086E455 /* 6. Add to Cart */,
+				A239EDDC24AB9E750093EC69 /* CameraViewController.swift */,
+			);
+			path = Applets;
 			sourceTree = "<group>";
 		};
 		A2E2CE4D24A3CCE700EFD31D /* 3. Vessel Home */ = {
@@ -183,6 +231,8 @@
 			isa = PBXGroup;
 			children = (
 				A2EE4F0824A6742C0086E455 /* ShopViewController.swift */,
+				A239EDC924AA78DD0093EC69 /* ItemsCollectionViewCell.swift */,
+				A239EDCA24AA78DD0093EC69 /* ItemsCollectionViewCell.xib */,
 			);
 			path = "6. Add to Cart";
 			sourceTree = "<group>";
@@ -210,13 +260,8 @@
 			isa = PBXGroup;
 			children = (
 				A2E2CE5124A3CDC500EFD31D /* Starting Files */,
-				A2E2CE4F24A3CD2D00EFD31D /* 1. Loading Screen */,
-				A2E2CE5024A3CDA000EFD31D /* 2. Continue Screen */,
-				A2E2CE4D24A3CCE700EFD31D /* 3. Vessel Home */,
-				A2E2CE5324A3CE0B00EFD31D /* 4. Settings Page */,
-				A239EDC424A900E00093EC69 /* 5. Create Account */,
-				A2EE4F0A24A6743E0086E455 /* 6. Add to Cart */,
-				A239EDC524A90F690093EC69 /* LoginViewController.swift */,
+				A239EDDA24AB9CE50093EC69 /* Vessel */,
+				A239EDDB24AB9D1A0093EC69 /* Applets */,
 				A2F3979524A13B2C008F3607 /* Assets.xcassets */,
 				A2F3979224A13B25008F3607 /* Main.storyboard */,
 				A2F3979724A13B2C008F3607 /* LaunchScreen.storyboard */,
@@ -374,6 +419,7 @@
 				A2F397E124A1AC76008F3607 /* Roboto-Black.ttf in Resources */,
 				A2F397DE24A1AC76008F3607 /* Roboto-MediumItalic.ttf in Resources */,
 				A2F3979424A13B25008F3607 /* Main.storyboard in Resources */,
+				A239EDCC24AA78DD0093EC69 /* ItemsCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,13 +442,19 @@
 				A2F397F724A1C0FD008F3607 /* VesselViewController.swift in Sources */,
 				A2EE4F0924A6742C0086E455 /* ShopViewController.swift in Sources */,
 				A239EDC324A900DB0093EC69 /* CreateAccountViewController.swift in Sources */,
+				A239EDCB24AA78DD0093EC69 /* ItemsCollectionViewCell.swift in Sources */,
+				A239EDCE24AA8D1E0093EC69 /* SliderViewController.swift in Sources */,
 				A2F3979124A13B25008F3607 /* ViewController.swift in Sources */,
 				A2F3978D24A13B25008F3607 /* AppDelegate.swift in Sources */,
+				A239EDD424AA9EA80093EC69 /* VolumeTableViewCell.swift in Sources */,
+				A239EDD824AA9F630093EC69 /* BrightTableViewCell.swift in Sources */,
 				A2F3978F24A13B25008F3607 /* SceneDelegate.swift in Sources */,
 				A2F397B124A142BB008F3607 /* LoadingScreenViewController.swift in Sources */,
 				A2F397B324A147F0008F3607 /* continueSegue.swift in Sources */,
 				A2F397B524A14BD1008F3607 /* ContinueScreenViewController.swift in Sources */,
 				A2F397F924A26D6C008F3607 /* SettingsViewController.swift in Sources */,
+				A239EDC824AA4F350093EC69 /* SuccessViewController.swift in Sources */,
+				A239EDDD24AB9E750093EC69 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,7 +615,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q3V87L4XQS;
 				INFOPLIST_FILE = sandbox/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -580,7 +634,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q3V87L4XQS;
 				INFOPLIST_FILE = sandbox/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
