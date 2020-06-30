@@ -6,30 +6,56 @@
 //  Copyright © 2020 Alex  Hu. All rights reserved.
 //
 
-/*
+
 import UIKit
 
-class ShopViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ShopViewController: UIViewController {
    
     // MARK: Functions
 
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-    }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-    }
-
-
+    @IBOutlet weak var items: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //createButton()
+        items.delegate = self
+        items.dataSource = self
         //setButtonContrainsts()
 
         // Do any additional setup after loading the view.
     }
+}
+
+
+extension ShopViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        print("you tapped me")
+    }
+}
+
+extension ShopViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 6
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "", for: indexPath)
+        
+        return cell
+    }
+    
+}
+
+/*
+extension ShopViewController: UICollectionViewFlowLayout{
+    
+}
+*/
+
+//UICollectionViewDelegate, UICollectionViewDataSource
+
 /*
     func createButton(){
         button.backgroundColor = UIColor.init(displayP3Red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
@@ -47,17 +73,5 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
 */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
-
  
- */
+

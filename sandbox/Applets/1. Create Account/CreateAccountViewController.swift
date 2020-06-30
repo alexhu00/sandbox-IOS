@@ -32,8 +32,8 @@ class CreateAccountViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let vc = LoginViewController()
-        delegate = vc as! accountDelegate
+        //let vc = LoginViewController()
+        //delegate = vc as! accountDelegate
         createButton()
         
         // Do any additional setup after loading the view.
@@ -66,18 +66,24 @@ class CreateAccountViewController: UIViewController {
         Button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         Button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         Button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        Button.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 620).isActive = true
+        Button.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 630).isActive = true
     }
     
     @IBAction func createAccount(_ sender: UIButton) {
         if termsAgreed == true {
-            if username.text == "alexhu" && password.text == "alexhu"{
-                //let vc = LoginViewController()
-                //vc.inputP = password.text
-                //vc.inputU = "ALEX HU"
+            if (username.text != "" && password.text != "" && password.text == confirmPassword.text)
+            {
+                print(username.text)
+                print(password.text)
+                print(confirmPassword.text)
+
                 performSegue(withIdentifier: "createAccount", sender: self)
-                print("yay")
-                delegate.accountInfo(u: username.text! , p: password.text!)
+                print("yeet")
+
+            }
+            else
+            {
+                createErrorMsg()
             }
             //print(username.text!)
             // print(password.text!)
@@ -88,9 +94,10 @@ class CreateAccountViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         let destinationVC = segue.destination as! LoginViewController
-        destinationVC.inputU = "ALEX HU"
+        destinationVC.inputU = username.text
+        destinationVC.inputP = password.text
+        //destination
     }
     
     
@@ -98,7 +105,19 @@ class CreateAccountViewController: UIViewController {
         //Button.isHidden = true
         //errorMsg.titleLabel? = "Pleae enter a username and password"
         errorMsg.font = UIFont(name: "Roboto-Bold", size: 12.0)
-        errorMsg.text = "Pleae enter a username and password"
+        
+        if (username.text == "" || password.text == "" || confirmPassword.text == "" )
+        {
+            errorMsg.text = "Please fill in all fields"
+        }
+        else if (password.text != confirmPassword.text) {
+            errorMsg.text = "Passwords do not match"
+        }
+        else {
+            errorMsg.text = "Please agree to the terms and conditions"
+        }
+        
+
         errorMsg.textColor = UIColor(ciColor: .red)
         errorMsg.textAlignment = .center
         view.addSubview(errorMsg)
@@ -119,7 +138,7 @@ class CreateAccountViewController: UIViewController {
         errorMsg.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         errorMsg.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         errorMsg.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        errorMsg.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 680).isActive = true
+        errorMsg.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 700).isActive = true
     }
     
     

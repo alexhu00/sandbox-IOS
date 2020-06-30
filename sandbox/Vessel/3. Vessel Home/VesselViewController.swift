@@ -23,18 +23,15 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
 
     // MARK: Properties
     
-    let section = ["E-Commerce", "UI Elements", "Content", "Entitlements"]
+    let section = ["E-Commerce", "UI Elements", "Entitlements"] // add "Content later
 
     var applets : [applet] = [
         applet(appletName: "Create Account", appletIcon: #imageLiteral(resourceName: "Combined Shape"), segue: "applet1"),
-        applet(appletName: "Add to Cart", appletIcon: #imageLiteral(resourceName: "Combined Shape"), segue: "applet2"),
-        applet(appletName: "Manage Cart", appletIcon: #imageLiteral(resourceName: "Combined Shape"), segue: "applet3"),
-        applet(appletName: "Manage Cart", appletIcon: #imageLiteral(resourceName: "Combined Shape"), segue: "applet4")
+        applet(appletName: "Add Credit Card", appletIcon: #imageLiteral(resourceName: "Combined Shape"), segue: "applet2"),
     ]
 
     var UIapplets : [applet] = [
-        applet(appletName: "Create Account", appletIcon: #imageLiteral(resourceName: "Combined Shape"), segue: "applet1"),
-        applet(appletName: "Add to Cart", appletIcon: #imageLiteral(resourceName: "Combined Shape"), segue: "applet2"),
+        applet(appletName: "Explore Sliders", appletIcon: #imageLiteral(resourceName: "Combined Shape"), segue: "applet3"),
     ]
 
     var contentApplets : [applet] = [
@@ -43,11 +40,10 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
     ]
 
     var entitlementsApplets : [applet] = [
-        applet(appletName: "Create Account", appletIcon: #imageLiteral(resourceName: "Combined Shape"), segue: "applet1"),
-        applet(appletName: "Add to Cart", appletIcon: #imageLiteral(resourceName: "Combined Shape"), segue: "applet2"),
+        applet(appletName: "Open Camera", appletIcon: #imageLiteral(resourceName: "Combined Shape"), segue: "applet4"),
     ]
     
-    lazy var appletsFullList = [applets, UIapplets, contentApplets, entitlementsApplets]
+    lazy var appletsFullList = [applets, UIapplets, entitlementsApplets] // add contentApplets later
 
     @IBOutlet weak var List: UITableView!
     
@@ -58,8 +54,12 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.largeTitleDisplayMode = .never
         List.delegate = self
         List.dataSource = self
+        List.rowHeight = UITableView.automaticDimension
+        List.estimatedRowHeight = 500
+
     }
     
     
@@ -101,7 +101,12 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
     
     // What Happens After Clicking on a Row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: applets[indexPath.row].segue, sender: self)
+        performSegue(withIdentifier: appletsFullList[indexPath.section][indexPath.row].segue, sender: self)
+    }
+    
+    
+    @IBAction func unwind( _ seg: UIStoryboardSegue) {
+        
     }
     
 }

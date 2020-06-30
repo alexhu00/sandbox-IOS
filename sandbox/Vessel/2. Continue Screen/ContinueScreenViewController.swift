@@ -48,7 +48,7 @@ class ContinueScreenViewController: UIViewController {
         Button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         Button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         Button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        Button.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 580).isActive = true
+        //Button.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 580).isActive = true
     }
 
     @IBAction func continueToVessel(_ sender: UIButton) {
