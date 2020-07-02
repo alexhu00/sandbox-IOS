@@ -25,6 +25,10 @@ class CreateAccountViewController: UIViewController {
     
     @IBOutlet weak var Button: UIButton!
     
+    @IBOutlet weak var view2: UIView!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     var errorMsg = UILabel()
     
 
@@ -57,7 +61,8 @@ class CreateAccountViewController: UIViewController {
         Button.setTitle("Create Account", for: .normal)
         Button.setTitleColor(.white, for: .normal)
         Button.titleLabel?.font = UIFont(name: "Roboto-Bold", size: 20.0)
-        view.addSubview(Button)
+        view2.addSubview(Button)
+        scrollView.delaysContentTouches = false
         setButtonContrainsts()
     }
     
@@ -66,10 +71,11 @@ class CreateAccountViewController: UIViewController {
         Button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         Button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         Button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        Button.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 630).isActive = true
+        //Button.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 630).isActive = true
     }
     
     @IBAction func createAccount(_ sender: UIButton) {
+        print("clicked!")
         if termsAgreed == true {
             if (username.text != "" && password.text != "" && password.text == confirmPassword.text)
             {
@@ -138,7 +144,8 @@ class CreateAccountViewController: UIViewController {
         errorMsg.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         errorMsg.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         errorMsg.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        errorMsg.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 700).isActive = true
+        //errorMsg.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 700).isActive = true
+        errorMsg.centerYAnchor.constraint(equalTo: self.Button.bottomAnchor, constant: 50).isActive = true
     }
     
     
