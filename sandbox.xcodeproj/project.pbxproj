@@ -17,6 +17,7 @@
 		A239EDD824AA9F630093EC69 /* BrightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239EDD724AA9F630093EC69 /* BrightTableViewCell.swift */; };
 		A239EDDD24AB9E750093EC69 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239EDDC24AB9E750093EC69 /* CameraViewController.swift */; };
 		A27CB3A324A3BA1C00BB3005 /* AppletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CB3A224A3BA1C00BB3005 /* AppletTableViewCell.swift */; };
+		A2A7091324AD7D830032DD14 /* AddPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A7091224AD7D830032DD14 /* AddPaymentViewController.swift */; };
 		A2EE4F0924A6742C0086E455 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EE4F0824A6742C0086E455 /* ShopViewController.swift */; };
 		A2F3978D24A13B25008F3607 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F3978C24A13B25008F3607 /* AppDelegate.swift */; };
 		A2F3978F24A13B25008F3607 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F3978E24A13B25008F3607 /* SceneDelegate.swift */; };
@@ -74,6 +75,7 @@
 		A239EDD724AA9F630093EC69 /* BrightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightTableViewCell.swift; sourceTree = "<group>"; };
 		A239EDDC24AB9E750093EC69 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		A27CB3A224A3BA1C00BB3005 /* AppletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppletTableViewCell.swift; sourceTree = "<group>"; };
+		A2A7091224AD7D830032DD14 /* AddPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentViewController.swift; sourceTree = "<group>"; };
 		A2EE4F0824A6742C0086E455 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		A2F3978924A13B25008F3607 /* sandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2F3978C24A13B25008F3607 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -168,10 +170,27 @@
 			children = (
 				A239EDC424A900E00093EC69 /* 1. Create Account */,
 				A239EDD924AB9CCB0093EC69 /* 2. Sliders */,
+				A239EDDE24ABEC7F0093EC69 /* 3. Open Camera */,
+				A2A7091424ADAA7E0032DD14 /* 4. Add Payment */,
 				A2EE4F0A24A6743E0086E455 /* 6. Add to Cart */,
-				A239EDDC24AB9E750093EC69 /* CameraViewController.swift */,
 			);
 			path = Applets;
+			sourceTree = "<group>";
+		};
+		A239EDDE24ABEC7F0093EC69 /* 3. Open Camera */ = {
+			isa = PBXGroup;
+			children = (
+				A239EDDC24AB9E750093EC69 /* CameraViewController.swift */,
+			);
+			path = "3. Open Camera";
+			sourceTree = "<group>";
+		};
+		A2A7091424ADAA7E0032DD14 /* 4. Add Payment */ = {
+			isa = PBXGroup;
+			children = (
+				A2A7091224AD7D830032DD14 /* AddPaymentViewController.swift */,
+			);
+			path = "4. Add Payment";
 			sourceTree = "<group>";
 		};
 		A2E2CE4D24A3CCE700EFD31D /* 3. Vessel Home */ = {
@@ -448,6 +467,7 @@
 				A2F3978D24A13B25008F3607 /* AppDelegate.swift in Sources */,
 				A239EDD424AA9EA80093EC69 /* VolumeTableViewCell.swift in Sources */,
 				A239EDD824AA9F630093EC69 /* BrightTableViewCell.swift in Sources */,
+				A2A7091324AD7D830032DD14 /* AddPaymentViewController.swift in Sources */,
 				A2F3978F24A13B25008F3607 /* SceneDelegate.swift in Sources */,
 				A2F397B124A142BB008F3607 /* LoadingScreenViewController.swift in Sources */,
 				A2F397B324A147F0008F3607 /* continueSegue.swift in Sources */,

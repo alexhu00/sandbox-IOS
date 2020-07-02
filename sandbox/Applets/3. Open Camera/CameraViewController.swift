@@ -10,9 +10,6 @@ import UIKit
 
 class CameraViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    
-    
-    
     @IBOutlet weak var imagePicked: UIImageView!
     
     override func viewDidLoad() {
@@ -58,7 +55,6 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 
         self.present(alert, animated:true, completion:nil)
         
-
     }
 /*
      switch AVCaptureDevice.authorizationStatus(for: .video) {
