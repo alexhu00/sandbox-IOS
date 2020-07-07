@@ -8,14 +8,41 @@
 
 import UIKit
 
+
 class AddPaymentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         createButton()
         print("ran!")
+        //AddingScreenViewController().cardDelegate = self
 
+        print(text)
+        confirmNum.text = text ?? "9452"
+        
     }
+    
+    @IBOutlet weak var confirmationLabel: UILabel!
+    /*
+    override func viewWillAppear(_: Bool) {
+            super.viewWillAppear(true)
+
+            //call your data populating/API calls from here
+    }
+    
+    override func viewWillAppear(_ animated: Bool){
+        UIViewController.reloadData()
+    }
+ */
+    
+    var text: String? {
+        didSet
+        {
+            updateLabel()
+        }
+    }
+
+    @IBOutlet weak var confirmNum: UILabel!
     
     @IBOutlet weak var Button: UIButton!
     
@@ -25,11 +52,20 @@ class AddPaymentViewController: UIViewController {
         showActionSheet()
     }
     
+    func updateLabel()
+    {
+        confirmNum.text = text
+    }
+    
     func showActionSheet() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let option1 = UIAlertAction(title: "Add Payment Method", style: .default) { action in
-            self.performSegue(withIdentifier: "addPayment", sender: self)
+            let selectionVC = self.storyboard!.instantiateViewController(withIdentifier: "AddingScreenViewController") as! AddingScreenViewController
+            selectionVC.cardDelegate = self
+            self.present(selectionVC, animated: true, completion: nil)
+            //self.performSegue(withIdentifier: "addPayment", sender: self)
+            
         }
         //let option3 = UIAlertAction(title: "Option", style: .default, handler: performSegue(withIdentifier: "addPayment", sender: self))
         let option2 = UIAlertAction(title: "Use Saved Method", style: .default, handler: nil)
@@ -62,5 +98,21 @@ class AddPaymentViewController: UIViewController {
     }
 
     
+    @IBAction func payment(_ sender: UIButton) {
+        performSegue(withIdentifier: "payment", sender: self)
+    }
     
+
+    
+    
+}
+
+extension AddPaymentViewController: creditCardDelegate {
+    func changePayment(cardNum: String) {
+        confirmNum.text = cardNum
+        print(cardNum)
+        print(confirmNum)
+        //confirmNum.text = String (cardNum)
+        print("ran!!! \n")
+    }
 }

@@ -26,12 +26,12 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
     let section = ["E-Commerce", "UI Elements", "Entitlements"] // add "Content later
 
     var applets : [applet] = [
-        applet(appletName: "Create Account", appletIcon: #imageLiteral(resourceName: "Combined Shape"), segue: "applet1"),
-        applet(appletName: "Add Credit Card", appletIcon: #imageLiteral(resourceName: "Combined Shape"), segue: "applet2"),
+        applet(appletName: "Create Account", appletIcon: #imageLiteral(resourceName: "Icon Path"), segue: "applet1"),
+        applet(appletName: "Add Credit Card", appletIcon: #imageLiteral(resourceName: "icons8-credit-card-30"), segue: "applet2"),
     ]
 
     var UIapplets : [applet] = [
-        applet(appletName: "Explore Sliders", appletIcon: #imageLiteral(resourceName: "Combined Shape"), segue: "applet3"),
+        applet(appletName: "Explore Sliders", appletIcon: #imageLiteral(resourceName: "icons8-slider-30"), segue: "applet3"),
     ]
 
     var contentApplets : [applet] = [
@@ -40,7 +40,7 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
     ]
 
     var entitlementsApplets : [applet] = [
-        applet(appletName: "Open Camera", appletIcon: #imageLiteral(resourceName: "Combined Shape"), segue: "applet4"),
+        applet(appletName: "Open Camera", appletIcon: #imageLiteral(resourceName: "icons8-camera-30"), segue: "applet4"),
     ]
     
     lazy var appletsFullList = [applets, UIapplets, entitlementsApplets] // add contentApplets later
@@ -59,10 +59,9 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
         List.dataSource = self
         List.rowHeight = UITableView.automaticDimension
         List.estimatedRowHeight = 500
-
     }
     
-    
+
     // MARK: Functions
     
     @IBAction func filterTapped(_ sender: UIButton) {
@@ -95,6 +94,8 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
         
         cell.appletLabel?.text = appletsFullList[indexPath.section][indexPath.row].appletName
         cell.appletIcon?.image = appletsFullList[indexPath.section][indexPath.row].appletIcon
+        cell.appletIcon?.image = (cell.appletIcon.image!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate))
+        cell.appletIcon?.tintColor = .init(red: 248/255, green: 19/255, blue: 179/255, alpha: 1)
         
         return cell
     }
