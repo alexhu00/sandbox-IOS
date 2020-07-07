@@ -12,10 +12,9 @@ protocol accountDelegate {
     func accountInfo(u: String, p: String)
 }
 
-class CreateAccountViewController: UIViewController {
+class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     var delegate: accountDelegate!
-    //var Button = UIButton()
     
     @IBOutlet weak var username: UITextField!
     
@@ -25,22 +24,61 @@ class CreateAccountViewController: UIViewController {
     
     @IBOutlet weak var Button: UIButton!
     
+    @IBOutlet weak var checkBox: UIButton!
+    
+    @IBOutlet weak var agree: UILabel!
+    
     @IBOutlet weak var view2: UIView!
     
     @IBOutlet weak var scrollView: UIScrollView!
     
     var errorMsg = UILabel()
     
+    var a11y = false
 
     var termsAgreed = false
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("loaded")
         //let vc = LoginViewController()
         //delegate = vc as! accountDelegate
         createButton()
-        
-        // Do any additional setup after loading the view.
+        username.delegate = self
+        password.delegate = self
+        confirmPassword.delegate = self
+        a11y = settings.a11yIsOn
+        print("a11y in creat account is set to \(a11y)")
+        if (a11y){
+            setA11y1()
+        }
+        else{
+            setA11y2()
+        }
+
+    }
+
+    func setA11y1() {
+        agree.isAccessibilityElement = true
+        checkBox.isAccessibilityElement = true
+        agree.accessibilityLabel = "I Agree to the Mesmer Terms of Service and Privacy Policy"
+        checkBox.accessibilityLabel = "Checkbox"
+        print("a11y true")
+    }
+    
+    func setA11y2() {
+        agree.isAccessibilityElement = true
+        checkBox.isAccessibilityElement = true
+        checkBox.accessibilityLabel = "Checkbox"
+        agree.accessibilityLabel = "I Agree to the Mesmer Terms of Service and Privacy Policy"
+        print("a11y false")
+    }
+
+    
+    func textFieldShouldReturn(_ textfield: UITextField) -> Bool{
+        textfield.resignFirstResponder()
+        return true
     }
     
     @IBAction func checkBoxTapped(_ sender: UIButton) {
@@ -76,27 +114,26 @@ class CreateAccountViewController: UIViewController {
     
     @IBAction func createAccount(_ sender: UIButton) {
         print("clicked!")
-        if termsAgreed == true {
-            if (username.text != "" && password.text != "" && password.text == confirmPassword.text)
-            {
-                print(username.text)
-                print(password.text)
-                print(confirmPassword.text)
-
-                performSegue(withIdentifier: "createAccount", sender: self)
-                print("yeet")
-
+        if (a11y){
+            if termsAgreed == true {
+                if (username.text != "" && password.text != "" && password.text == confirmPassword.text)
+                {
+                    performSegue(withIdentifier: "createAccount", sender: self)
+                    print("yeet")
+                }
+                else {
+                    createErrorMsg()
+                }
             }
-            else
-            {
+            else{
                 createErrorMsg()
             }
-            //print(username.text!)
-            // print(password.text!)
+            
         }
-        else{
-            createErrorMsg()
+        else {
+            performSegue(withIdentifier: "createAccount", sender: self)
         }
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

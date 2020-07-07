@@ -10,16 +10,20 @@ import UIKit
 
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    let settingsArray = ["Logout", "Accessibility Mode"]
+    // MARK: Properties
+    let settingsArray = ["Logout", "Accessibility Mode", "Entitlement Alerts"]
     //var index = 0
 
+    @IBOutlet weak var tableView: UITableView!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //a11yToggle.isOn = false
+        ///entitlementsToggle.isOn = false
 
         // Do any additional setup after loading the view.
     }
-    
-    @IBOutlet weak var tableView: UITableView!
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,7 +31,26 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        var cellIdentifier = ""
+        
+        if(indexPath.item == 0){
+            cellIdentifier = "cell"
+            print("ok")
+        }
+
+        if(indexPath.item == 1){
+            cellIdentifier = "a11yCell"
+            print("good")
+        }
+        
+        if(indexPath.item == 2){
+            cellIdentifier = "entitlementsCell"
+            print("gr8")
+        }
+        
+    
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        
         
         cell.textLabel?.text = settingsArray[indexPath.row]
         return cell

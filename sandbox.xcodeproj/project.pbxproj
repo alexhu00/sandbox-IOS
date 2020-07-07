@@ -17,7 +17,11 @@
 		A239EDD824AA9F630093EC69 /* BrightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239EDD724AA9F630093EC69 /* BrightTableViewCell.swift */; };
 		A239EDDD24AB9E750093EC69 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239EDDC24AB9E750093EC69 /* CameraViewController.swift */; };
 		A27CB3A324A3BA1C00BB3005 /* AppletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CB3A224A3BA1C00BB3005 /* AppletTableViewCell.swift */; };
+		A2860AFC24AE5C4900A2F5AE /* AddingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2860AFB24AE5C4900A2F5AE /* AddingScreenViewController.swift */; };
+		A2860AFE24AE7DAB00A2F5AE /* a11yTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2860AFD24AE7DAB00A2F5AE /* a11yTableViewCell.swift */; };
+		A2860B0024AE7F0D00A2F5AE /* entitlementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2860AFF24AE7F0D00A2F5AE /* entitlementTableViewCell.swift */; };
 		A2A7091324AD7D830032DD14 /* AddPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A7091224AD7D830032DD14 /* AddPaymentViewController.swift */; };
+		A2AD117E24B445360078CBBD /* settingsValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AD117D24B445360078CBBD /* settingsValues.swift */; };
 		A2EE4F0924A6742C0086E455 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EE4F0824A6742C0086E455 /* ShopViewController.swift */; };
 		A2F3978D24A13B25008F3607 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F3978C24A13B25008F3607 /* AppDelegate.swift */; };
 		A2F3978F24A13B25008F3607 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F3978E24A13B25008F3607 /* SceneDelegate.swift */; };
@@ -75,7 +79,11 @@
 		A239EDD724AA9F630093EC69 /* BrightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightTableViewCell.swift; sourceTree = "<group>"; };
 		A239EDDC24AB9E750093EC69 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		A27CB3A224A3BA1C00BB3005 /* AppletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppletTableViewCell.swift; sourceTree = "<group>"; };
+		A2860AFB24AE5C4900A2F5AE /* AddingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingScreenViewController.swift; sourceTree = "<group>"; };
+		A2860AFD24AE7DAB00A2F5AE /* a11yTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = a11yTableViewCell.swift; sourceTree = "<group>"; };
+		A2860AFF24AE7F0D00A2F5AE /* entitlementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = entitlementTableViewCell.swift; sourceTree = "<group>"; };
 		A2A7091224AD7D830032DD14 /* AddPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentViewController.swift; sourceTree = "<group>"; };
+		A2AD117D24B445360078CBBD /* settingsValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsValues.swift; sourceTree = "<group>"; };
 		A2EE4F0824A6742C0086E455 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		A2F3978924A13B25008F3607 /* sandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2F3978C24A13B25008F3607 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -161,6 +169,7 @@
 				A2E2CE5024A3CDA000EFD31D /* 2. Continue Screen */,
 				A2E2CE4D24A3CCE700EFD31D /* 3. Vessel Home */,
 				A2E2CE5324A3CE0B00EFD31D /* 4. Settings Page */,
+				A2AD117D24B445360078CBBD /* settingsValues.swift */,
 			);
 			path = Vessel;
 			sourceTree = "<group>";
@@ -189,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				A2A7091224AD7D830032DD14 /* AddPaymentViewController.swift */,
+				A2860AFB24AE5C4900A2F5AE /* AddingScreenViewController.swift */,
 			);
 			path = "4. Add Payment";
 			sourceTree = "<group>";
@@ -242,6 +252,8 @@
 			isa = PBXGroup;
 			children = (
 				A2F397F824A26D6C008F3607 /* SettingsViewController.swift */,
+				A2860AFF24AE7F0D00A2F5AE /* entitlementTableViewCell.swift */,
+				A2860AFD24AE7DAB00A2F5AE /* a11yTableViewCell.swift */,
 			);
 			path = "4. Settings Page";
 			sourceTree = "<group>";
@@ -458,6 +470,7 @@
 			files = (
 				A239EDC624A90F690093EC69 /* LoginViewController.swift in Sources */,
 				A27CB3A324A3BA1C00BB3005 /* AppletTableViewCell.swift in Sources */,
+				A2860AFE24AE7DAB00A2F5AE /* a11yTableViewCell.swift in Sources */,
 				A2F397F724A1C0FD008F3607 /* VesselViewController.swift in Sources */,
 				A2EE4F0924A6742C0086E455 /* ShopViewController.swift in Sources */,
 				A239EDC324A900DB0093EC69 /* CreateAccountViewController.swift in Sources */,
@@ -466,6 +479,7 @@
 				A2F3979124A13B25008F3607 /* ViewController.swift in Sources */,
 				A2F3978D24A13B25008F3607 /* AppDelegate.swift in Sources */,
 				A239EDD424AA9EA80093EC69 /* VolumeTableViewCell.swift in Sources */,
+				A2860AFC24AE5C4900A2F5AE /* AddingScreenViewController.swift in Sources */,
 				A239EDD824AA9F630093EC69 /* BrightTableViewCell.swift in Sources */,
 				A2A7091324AD7D830032DD14 /* AddPaymentViewController.swift in Sources */,
 				A2F3978F24A13B25008F3607 /* SceneDelegate.swift in Sources */,
@@ -475,6 +489,8 @@
 				A2F397F924A26D6C008F3607 /* SettingsViewController.swift in Sources */,
 				A239EDC824AA4F350093EC69 /* SuccessViewController.swift in Sources */,
 				A239EDDD24AB9E750093EC69 /* CameraViewController.swift in Sources */,
+				A2860B0024AE7F0D00A2F5AE /* entitlementTableViewCell.swift in Sources */,
+				A2AD117E24B445360078CBBD /* settingsValues.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

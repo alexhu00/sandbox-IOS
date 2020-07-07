@@ -10,6 +10,7 @@ import UIKit
 
 class SliderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
+    //let a11y = a11yTableViewCell.on
     var section = ["Volume", "Brightness"]
     var cellIdentifier = "sliderCell"
     var tableViewCellKind: String = ""
@@ -47,7 +48,14 @@ class SliderViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Sliders"
+        /*
+        if (a11y) {
+            title = "SLIDERS"
+        }
+        else{
+            title = "Sliders"
+        }
+ */
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
         List.delegate = self
