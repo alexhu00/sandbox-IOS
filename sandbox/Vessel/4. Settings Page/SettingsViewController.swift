@@ -21,8 +21,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         //a11yToggle.isOn = false
         ///entitlementsToggle.isOn = false
-
-        // Do any additional setup after loading the view.
     }
     
     
