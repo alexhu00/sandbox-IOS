@@ -10,9 +10,12 @@ import UIKit
 
 class entitlementTableViewCell: UITableViewCell {
     
-
+    // MARK: Properties
 
     @IBOutlet weak var entitlementToggle: UISwitch!
+    
+    
+    // MARK: Functions
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -9,19 +9,17 @@
 import UIKit
 
 class SuccessViewController: UIViewController {
+    
+    // MARK: viewDidLoad
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
+    // MARK: Functions
+    
     @IBAction func exitApplet(_ sender: UIButton) {
-            
         performSegue(withIdentifier: "unwindToHome", sender: self)
-        
-        
     }
     
 }

@@ -14,6 +14,8 @@ protocol accountDelegate {
 
 class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
+    // MARK: Properties
+    
     var delegate: accountDelegate!
     
     @IBOutlet weak var username: UITextField!
@@ -32,33 +34,36 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet var collectionOfLabels:[UILabel]!
+    
     var errorMsg = UILabel()
     
     var a11y = false
 
     var termsAgreed = false
 
+    
+    // MARK: viewDidLoad
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("loaded")
-        //let vc = LoginViewController()
-        //delegate = vc as! accountDelegate
-        createButton()
-        username.delegate = self
-        password.delegate = self
-        confirmPassword.delegate = self
         a11y = settings.a11yIsOn
-        print("a11y in creat account is set to \(a11y)")
         if (a11y){
             setA11y1()
         }
         else{
             setA11y2()
         }
-
+        createButton()
+        username.delegate = self
+        password.delegate = self
+        confirmPassword.delegate = self
     }
 
+    
+    // MARK: Functions
+    
+    // Setting Correct a11y Features
     func setA11y1() {
         agree.isAccessibilityElement = true
         checkBox.isAccessibilityElement = true
@@ -67,20 +72,42 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         print("a11y true")
     }
     
+    // Setting a11y Violations
     func setA11y2() {
         agree.isAccessibilityElement = true
         checkBox.isAccessibilityElement = true
         checkBox.accessibilityLabel = "Checkbox"
         agree.accessibilityLabel = "I Agree to the Mesmer Terms of Service and Privacy Policy"
+        collectionOfLabels[0].isHidden = true
+        collectionOfLabels[1].isHidden = true
+        collectionOfLabels[2].isHidden = true
+        setAgreeContrainsts()
+        setCheckboxContrainsts()
         print("a11y false")
     }
 
+    // Setting agreement statement constraints that violate a11y rules
+    func setAgreeContrainsts() {
+        agree.translatesAutoresizingMaskIntoConstraints = false
+        agree.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
+        //errorMsg.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 700).isActive = true
+        //agree.centerYAnchor.constraint(equalTo: self.Button.bottomAnchor, constant: 50).isActive = true
+    }
     
+    // Setting checkbox constraints that violate a11y rules
+    func setCheckboxContrainsts() {
+        checkBox.translatesAutoresizingMaskIntoConstraints = false
+        //checkBox.leadingAnchor.constraint(equalTo: self.agree.trailingAnchor, constant: 15) = true
+        checkBox.leadingAnchor.constraint(equalTo: self.agree.leadingAnchor, constant: 245).isActive = true
+    }
+    
+    // Allow user to dimiss keyboard by clicking return
     func textFieldShouldReturn(_ textfield: UITextField) -> Bool{
         textfield.resignFirstResponder()
         return true
     }
     
+    // Checkbox tapped action
     @IBAction func checkBoxTapped(_ sender: UIButton) {
         if sender.isSelected{
             sender.isSelected = false
@@ -92,6 +119,38 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // Create account action
+    @IBAction func createAccount(_ sender: UIButton) {
+        print("clicked!")
+        if (a11y){
+            if termsAgreed == true {
+                if (username.text != "" && password.text != "" && password.text == confirmPassword.text){
+                    performSegue(withIdentifier: "createAccount", sender: self)
+                    print("yeet")
+                }
+                else {
+                    createErrorMsg()
+                }
+            }
+            else{
+                createErrorMsg()
+            }
+        }
+        else {
+            performSegue(withIdentifier: "createAccount", sender: self)
+        }
+
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! LoginViewController
+        destinationVC.inputU = username.text
+        destinationVC.inputP = password.text
+        //destination
+    }
+    
+    
+    // Creating Buttton
     func createButton(){
         //Button.isHidden = true
         Button.backgroundColor = UIColor.init(displayP3Red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
@@ -109,41 +168,10 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         Button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         Button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         Button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        //Button.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 630).isActive = true
+        //Button.centerYAnchor.constraint(equalTo: self.agree.bottomAnchor, constant: 50).isActive = true
     }
     
-    @IBAction func createAccount(_ sender: UIButton) {
-        print("clicked!")
-        if (a11y){
-            if termsAgreed == true {
-                if (username.text != "" && password.text != "" && password.text == confirmPassword.text)
-                {
-                    performSegue(withIdentifier: "createAccount", sender: self)
-                    print("yeet")
-                }
-                else {
-                    createErrorMsg()
-                }
-            }
-            else{
-                createErrorMsg()
-            }
-            
-        }
-        else {
-            performSegue(withIdentifier: "createAccount", sender: self)
-        }
-
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! LoginViewController
-        destinationVC.inputU = username.text
-        destinationVC.inputP = password.text
-        //destination
-    }
-    
-    
+    // Creating Error Message if Needed
     func createErrorMsg(){
         //Button.isHidden = true
         //errorMsg.titleLabel? = "Pleae enter a username and password"
@@ -159,21 +187,10 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         else {
             errorMsg.text = "Please agree to the terms and conditions"
         }
-        
-
         errorMsg.textColor = UIColor(ciColor: .red)
         errorMsg.textAlignment = .center
         view.addSubview(errorMsg)
         setErrorMsgContrainsts()
-        
-/*
-        UIView.transition(with: errorMsg,
-                          duration: 5.0,
-                              options: [.transitionCrossDissolve],
-                              animations: {
-                                self.errorMsg.text = "Pleae enter a username and password"
-        }, completion: nil)
- */
     }
     
     func setErrorMsgContrainsts() {
@@ -185,6 +202,14 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         errorMsg.centerYAnchor.constraint(equalTo: self.Button.bottomAnchor, constant: 50).isActive = true
     }
     
-    
-
 }
+
+
+/*
+       UIView.transition(with: errorMsg,
+                         duration: 5.0,
+                             options: [.transitionCrossDissolve],
+                             animations: {
+                               self.errorMsg.text = "Pleae enter a username and password"
+       }, completion: nil)
+*/

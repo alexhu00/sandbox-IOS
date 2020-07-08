@@ -22,6 +22,7 @@
 		A2860B0024AE7F0D00A2F5AE /* entitlementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2860AFF24AE7F0D00A2F5AE /* entitlementTableViewCell.swift */; };
 		A2A7091324AD7D830032DD14 /* AddPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A7091224AD7D830032DD14 /* AddPaymentViewController.swift */; };
 		A2AD117E24B445360078CBBD /* settingsValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AD117D24B445360078CBBD /* settingsValues.swift */; };
+		A2AD118124B65C3D0078CBBD /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AD118024B65C3D0078CBBD /* LocationViewController.swift */; };
 		A2EE4F0924A6742C0086E455 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EE4F0824A6742C0086E455 /* ShopViewController.swift */; };
 		A2F3978D24A13B25008F3607 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F3978C24A13B25008F3607 /* AppDelegate.swift */; };
 		A2F3978F24A13B25008F3607 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F3978E24A13B25008F3607 /* SceneDelegate.swift */; };
@@ -84,6 +85,7 @@
 		A2860AFF24AE7F0D00A2F5AE /* entitlementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = entitlementTableViewCell.swift; sourceTree = "<group>"; };
 		A2A7091224AD7D830032DD14 /* AddPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentViewController.swift; sourceTree = "<group>"; };
 		A2AD117D24B445360078CBBD /* settingsValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsValues.swift; sourceTree = "<group>"; };
+		A2AD118024B65C3D0078CBBD /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		A2EE4F0824A6742C0086E455 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		A2F3978924A13B25008F3607 /* sandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2F3978C24A13B25008F3607 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -169,7 +171,6 @@
 				A2E2CE5024A3CDA000EFD31D /* 2. Continue Screen */,
 				A2E2CE4D24A3CCE700EFD31D /* 3. Vessel Home */,
 				A2E2CE5324A3CE0B00EFD31D /* 4. Settings Page */,
-				A2AD117D24B445360078CBBD /* settingsValues.swift */,
 			);
 			path = Vessel;
 			sourceTree = "<group>";
@@ -181,6 +182,7 @@
 				A239EDD924AB9CCB0093EC69 /* 2. Sliders */,
 				A239EDDE24ABEC7F0093EC69 /* 3. Open Camera */,
 				A2A7091424ADAA7E0032DD14 /* 4. Add Payment */,
+				A2AD117F24B65C100078CBBD /* 5. Location */,
 				A2EE4F0A24A6743E0086E455 /* 6. Add to Cart */,
 			);
 			path = Applets;
@@ -201,6 +203,14 @@
 				A2860AFB24AE5C4900A2F5AE /* AddingScreenViewController.swift */,
 			);
 			path = "4. Add Payment";
+			sourceTree = "<group>";
+		};
+		A2AD117F24B65C100078CBBD /* 5. Location */ = {
+			isa = PBXGroup;
+			children = (
+				A2AD118024B65C3D0078CBBD /* LocationViewController.swift */,
+			);
+			path = "5. Location";
 			sourceTree = "<group>";
 		};
 		A2E2CE4D24A3CCE700EFD31D /* 3. Vessel Home */ = {
@@ -254,6 +264,7 @@
 				A2F397F824A26D6C008F3607 /* SettingsViewController.swift */,
 				A2860AFF24AE7F0D00A2F5AE /* entitlementTableViewCell.swift */,
 				A2860AFD24AE7DAB00A2F5AE /* a11yTableViewCell.swift */,
+				A2AD117D24B445360078CBBD /* settingsValues.swift */,
 			);
 			path = "4. Settings Page";
 			sourceTree = "<group>";
@@ -483,6 +494,7 @@
 				A239EDD824AA9F630093EC69 /* BrightTableViewCell.swift in Sources */,
 				A2A7091324AD7D830032DD14 /* AddPaymentViewController.swift in Sources */,
 				A2F3978F24A13B25008F3607 /* SceneDelegate.swift in Sources */,
+				A2AD118124B65C3D0078CBBD /* LocationViewController.swift in Sources */,
 				A2F397B124A142BB008F3607 /* LoadingScreenViewController.swift in Sources */,
 				A2F397B324A147F0008F3607 /* continueSegue.swift in Sources */,
 				A2F397B524A14BD1008F3607 /* ContinueScreenViewController.swift in Sources */,
@@ -651,14 +663,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q3V87L4XQS;
+				DEVELOPMENT_TEAM = 6YL42LJTMM;
 				INFOPLIST_FILE = sandbox/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Alex.sandbox;
+				PRODUCT_BUNDLE_IDENTIFIER = "alex.hu-mesmerhq.com";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -670,14 +682,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q3V87L4XQS;
+				DEVELOPMENT_TEAM = 6YL42LJTMM;
 				INFOPLIST_FILE = sandbox/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Alex.sandbox;
+				PRODUCT_BUNDLE_IDENTIFIER = "alex.hu-mesmerhq.com";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -9,20 +9,29 @@
 import UIKit
 
 class VolumeTableViewCell: UITableViewCell {
+    
+    // MARK: Properties
 
     @IBOutlet weak var volumeSlider: UISlider!
     
     lazy var volume = Int(volumeSlider.value)
     
+    var a11y = settings.a11yIsOn
     
     @IBOutlet weak var bigVol: UIImageView!
     
     @IBOutlet weak var lilVol: UIImageView!
     
+    // MARK: Functions
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        //volume = Int(volumeSlider.value)
-        // Initialization code
+        if (a11y) {
+            setA11y1()
+        }
+        else{
+            setA11y2()
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -31,9 +40,18 @@ class VolumeTableViewCell: UITableViewCell {
         lilVol.image = (lilVol.image!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate))
         bigVol.tintColor = .init(red: 128/255, green: 128/255, blue: 128/255, alpha: 1)
         lilVol.tintColor = .init(red: 128/255, green: 128/255, blue: 128/255, alpha: 1)
-       
-        // tintedImage2.tintColor = .init(red: 128/255, green: 128/255, blue: 128/255, alpha: 1)
-
-        // Configure the view for the selected state
     }
+    
+    func setA11y1() {
+        volumeSlider.isAccessibilityElement = true
+        volumeSlider.accessibilityLabel = "Volume"
+        print("a11y true")
+    }
+    
+    func setA11y2() {
+        volumeSlider.isAccessibilityElement = true
+        volumeSlider.accessibilityLabel = "Slider"
+        print("a11y false")
+    }
+    
 }

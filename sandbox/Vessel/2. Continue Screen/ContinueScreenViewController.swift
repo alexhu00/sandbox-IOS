@@ -9,16 +9,22 @@
 import UIKit
 
 class ContinueScreenViewController: UIViewController {
-
+    
+    // MARK: Properties
+    
+    var termsAgreed = false
+    
+    @IBOutlet weak var Button: UIButton!
+    
+    
+    // MARK: viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         createButton()
     }
-    
-    //var Button = UIButton()
-    var termsAgreed = false
-    
-    @IBOutlet weak var Button: UIButton!
+
+    // MARK: Functions
     
     @IBAction func checkBoxTapped(_ sender: UIButton) {
         if sender.isSelected{
@@ -31,7 +37,13 @@ class ContinueScreenViewController: UIViewController {
         }
     }
     
+    @IBAction func continueToVessel(_ sender: UIButton) {
+        if termsAgreed == true {
+            performSegue(withIdentifier: "continueToVessel", sender: self)
+        }
+    }
 
+    // MARK: Creating Button
     func createButton(){
         //Button.isHidden = true
         Button.backgroundColor = UIColor.init(displayP3Red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
@@ -50,17 +62,6 @@ class ContinueScreenViewController: UIViewController {
         Button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         //Button.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 580).isActive = true
     }
-
-    @IBAction func continueToVessel(_ sender: UIButton) {
-        if termsAgreed == true {
-            performSegue(withIdentifier: "continueToVessel", sender: self)
-        }
-    }
-    
-
-
-    
-
 
 }
 

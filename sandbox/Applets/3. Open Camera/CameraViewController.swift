@@ -10,12 +10,19 @@ import UIKit
 
 class CameraViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    // MARK: Properties
+    
     @IBOutlet weak var imagePicked: UIImageView!
+   
+    
+    // MARK: viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    
+    // MARK: Functions
     
     @IBAction func openCamera(_ sender: UIButton) {
         createAlert()
@@ -24,7 +31,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
     func cameraOpens(){
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             print("is available")
-            var imagePicker = UIImagePickerController()
+            let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .camera;
             imagePicker.allowsEditing = false
@@ -56,31 +63,33 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         self.present(alert, animated:true, completion:nil)
         
     }
-/*
-     switch AVCaptureDevice.authorizationStatus(for: .video) {
-         case .authorized: // The user has previously granted access to the camera.
-             self.setupCaptureSession()
-         
-         case .notDetermined: // The user has not yet been asked for camera access.
-             AVCaptureDevice.requestAccess(for: .video) { granted in
-                 if granted {
-                     self.setupCaptureSession()
-                 }
-             }
-         
-         case .denied: // The user has previously denied access.
-             return
-
-         case .restricted: // The user can't grant access due to restrictions.
-             return
-     }
-     
-     
-    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        let image = info[UIImagePickerController.InfoKey.originalImage.rawValue] as! UIImage
-        imagePicked.image = image
-        dismiss(animated:true, completion: nil)
-    }
- 
- */
 }
+
+
+/*
+    switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized: // The user has previously granted access to the camera.
+            self.setupCaptureSession()
+        
+        case .notDetermined: // The user has not yet been asked for camera access.
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                if granted {
+                    self.setupCaptureSession()
+                }
+            }
+        
+        case .denied: // The user has previously denied access.
+            return
+
+        case .restricted: // The user can't grant access due to restrictions.
+            return
+    }
+    
+    
+   private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+       let image = info[UIImagePickerController.InfoKey.originalImage.rawValue] as! UIImage
+       imagePicked.image = image
+       dismiss(animated:true, completion: nil)
+   }
+
+*/

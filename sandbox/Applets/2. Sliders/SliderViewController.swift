@@ -10,52 +10,42 @@ import UIKit
 
 class SliderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
-    //let a11y = a11yTableViewCell.on
-    var section = ["Volume", "Brightness"]
-    var cellIdentifier = "sliderCell"
-    var tableViewCellKind: String = ""
+    // MARK: Properties
 
-    /*
-    @IBOutlet weak var slider: UISlider!
+    var section = ["Volume", "Brightness"]
     
-    @IBOutlet weak var slider2: UISlider!
+    var cellIdentifier = "sliderCell"
     
-    lazy var volume = slider.value
- */
-    
+    var tableViewCellKind: String = ""
     
     @IBOutlet weak var volumeLabel: UILabel!
+    
     @IBAction func moveSlider(_ sender: UISlider) {
         let currentValue = Int(sender.value*100)
-        //print("Slider changing to \(currentValue) ?")
         volumeLabel.text = "\(currentValue)"
     }
     
-
     @IBOutlet weak var brightnessLabel: UILabel!
+    
     @IBAction func moveSlider2(_ sender: UISlider) {
         let currentValue = Int(sender.value*100)
         brightnessLabel.text = "\(currentValue)"
     }
     
-    
     @IBOutlet weak var List: UITableView!
-
+    
+    var a11y = settings.a11yIsOn
     
     var volume = 0
+    
     var brightness = 0
     
+
+    // MARK: viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*
-        if (a11y) {
-            title = "SLIDERS"
-        }
-        else{
-            title = "Sliders"
-        }
- */
+
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
         List.delegate = self
@@ -65,6 +55,9 @@ class SliderViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //brightness = BrightTableViewCell.brightness
 
     }
+    
+    
+    // MARK: Functions
     
     // Number of Sections
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -76,10 +69,12 @@ class SliderViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return self.section[section]
     }
     
+    // Number of Rows in Each Section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
+    // Tableview Cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //cellIdentifier = "sliderCell"
@@ -93,13 +88,37 @@ class SliderViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cellIdentifier = "sliderCell2"
             print("good")
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) 
-        
-        //print(cell?.volume)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         
         return cell
     }
+}
 
+
+       //a11y =
+       /*
+       if (a11y) {
+           setA11y1()
+       }
+       else{
+           setA11y2()
+       }
+*/
+
+//var vs = VolumeTableViewCell()
+//var volumeSlider = vs.volumeSlider
+//var bs = BrightTableViewCell()
+//var volumeSlider = bs.brightSlider
+
+
+   /*
+   @IBOutlet weak var slider: UISlider!
+   
+   @IBOutlet weak var slider2: UISlider!
+   
+   lazy var volume = slider.value
+*/
+   
 
 /*
     
@@ -114,4 +133,3 @@ class SliderViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
 */
-}
