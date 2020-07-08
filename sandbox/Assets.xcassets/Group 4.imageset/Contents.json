@@ -1,25 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "customer-bot (1)-1.png",
+      "filename" : "Group 4.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "customer-bot (1)-2.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "customer-bot (1).png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
+      "filename" : "Group 4@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Group 4@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

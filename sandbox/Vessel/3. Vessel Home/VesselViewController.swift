@@ -14,11 +14,6 @@ struct applet {
     var segue : String
 }
 
-//var applets : [applet] = [applet]()
-
-    
-// ["Create Account", "Add to Cart", "Manage Cart" ]
-
 class VesselViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
 
     // MARK: Properties
@@ -41,6 +36,7 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
 
     var entitlementsApplets : [applet] = [
         applet(appletName: "Open Camera", appletIcon: #imageLiteral(resourceName: "icons8-camera-30"), segue: "applet4"),
+        applet(appletName: "Location", appletIcon: #imageLiteral(resourceName: "icons8-marker-31"), segue: "applet5"),
     ]
     
     lazy var appletsFullList = [applets, UIapplets, entitlementsApplets] // add contentApplets later
@@ -48,6 +44,20 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var List: UITableView!
     
     @IBOutlet weak var Filter: UIButton!
+    
+    @IBOutlet weak var search: UISearchBar!
+    
+    var sectionSearch = [String]()
+    
+    var searchApplet = [[applet]]()
+    
+    var searching = false
+    
+    var searchApplets = [applet]()
+    
+    var searchUIApplets = [applet]()
+    
+    var searchEntitlemnts = [applet]()
     
     
     // MARK: viewDidLoad
@@ -59,29 +69,50 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
         List.dataSource = self
         List.rowHeight = UITableView.automaticDimension
         List.estimatedRowHeight = 500
+        search.delegate = self
     }
     
 
     // MARK: Functions
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        search.resignFirstResponder()
+    }
+
     @IBAction func filterTapped(_ sender: UIButton) {
         print("hi")
     }
     
     // Number of Sections
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.section.count
+        if searching{
+            return self.searchApplet.count
+        }
+        else{
+            return self.section.count
+        }
     }
     
     // Title of Each Section
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.section[section]
+        if searching{
+            return self.sectionSearch[section]
+        }
+        else{
+            return self.section[section]
+        }
     }
     
     // Number of Rows in Each Section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(appletsFullList[section].count)
-        return appletsFullList[section].count
+        if searching{
+            return searchApplet[section].count
+        }
+        else{
+            return appletsFullList[section].count
+        }
+        //print(appletsFullList[section].count)
+
     }
     
     // Intializing What Image and Label is in Each Row
@@ -92,11 +123,18 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
             fatalError("The dequeued cell is not an instance of MealTableViewCell.")
         }
         
-        cell.appletLabel?.text = appletsFullList[indexPath.section][indexPath.row].appletName
-        cell.appletIcon?.image = appletsFullList[indexPath.section][indexPath.row].appletIcon
+        if searching {
+            cell.appletLabel?.text = searchApplet[indexPath.section][indexPath.row].appletName
+            cell.appletIcon?.image = searchApplet[indexPath.section][indexPath.row].appletIcon
+        }
+        else{
+            cell.appletLabel?.text = appletsFullList[indexPath.section][indexPath.row].appletName
+            cell.appletIcon?.image = appletsFullList[indexPath.section][indexPath.row].appletIcon
+        }
         cell.appletIcon?.image = (cell.appletIcon.image!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate))
         cell.appletIcon?.tintColor = .init(red: 248/255, green: 19/255, blue: 179/255, alpha: 1)
-        
+
+
         return cell
     }
     
@@ -105,11 +143,75 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
         performSegue(withIdentifier: appletsFullList[indexPath.section][indexPath.row].segue, sender: self)
     }
     
-    
+    // Unwind Function
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
         
     }
     
+}
+
+// Search Bar Extension
+extension VesselViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //searchApplet = appletsFullList.filter({$0.applet.appletName.lowercased().prefix(searchText.count) == searchText.lowercased()})
+        searchApplets = applets.filter({$0.appletName.lowercased().prefix(searchText.count) == searchText.lowercased()})
+        searchUIApplets = UIapplets.filter({$0.appletName.lowercased().prefix(searchText.count) == searchText.lowercased()})
+        searchEntitlemnts = entitlementsApplets.filter({$0.appletName.lowercased().prefix(searchText.count) == searchText.lowercased()})
+            //entitlementsApplets.filter({$0.appletName.lowercased().contains(searchText.lowercased())})
+        
+        for i in searchApplets{
+            print(i.appletName)
+        }
+        /*
+        if(searchApplets.count != 0){
+            searchApplet.append(searchApplets)
+            sectionSearch.append("E-Commerce")
+        }
+        if(searchUIApplets.count != 0){
+            searchApplet.append(searchUIApplets)
+            sectionSearch.append("UI Elements")
+        }
+        if(searchEntitlemnts.count != 0){
+            searchApplet.append(searchEntitlemnts)
+            sectionSearch.append("Entitlements")
+        }
+ */
+        searchApplet = [searchApplets, searchUIApplets, searchEntitlemnts]
+        sectionSearch = ["E-Commerce", "UI Elements", "Entitlements"]
+
+        if (searchApplets.count == 0) {
+            searchApplet = [searchUIApplets, searchEntitlemnts]
+            sectionSearch = ["UI Elements", "Entitlements"]
+        }
+        if (searchUIApplets.count == 0) {
+            searchApplet = [searchApplets, searchEntitlemnts]
+            sectionSearch = ["E-Commerce", "Entitlements"]
+        }
+        if (searchEntitlemnts.count == 0) {
+            searchApplet = [searchApplets, searchUIApplets]
+            sectionSearch = ["E-Commerce", "UI Elements"]
+        }
+        if (searchApplets.count == 0 && searchUIApplets.count == 0) {
+            searchApplet = [searchEntitlemnts]
+            sectionSearch = ["Entitlements"]
+        }
+        if (searchEntitlemnts.count == 0 && searchUIApplets.count == 0) {
+            searchApplet = [searchApplets]
+            sectionSearch = ["E-Commerce"]
+        }
+        if (searchApplets.count == 0 && searchEntitlemnts.count == 0) {
+            searchApplet = [searchUIApplets]
+            sectionSearch = ["UI Elements"]
+        }
+        if (searchApplets.count == 0 && searchEntitlemnts.count == 0 && searchUIApplets.count == 0) {
+            searchApplet = []
+            sectionSearch = []
+        }
+        
+        //searchApplet = [searchApplets, searchUIApplets, searchEntitlemnts]
+        searching = true
+        List.reloadData()
+    }
 }
 
 /*

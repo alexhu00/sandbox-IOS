@@ -11,11 +11,13 @@ import UIKit
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: Properties
+    
     let settingsArray = ["Logout", "Accessibility Mode", "Entitlement Alerts"]
-    //var index = 0
 
     @IBOutlet weak var tableView: UITableView!
 
+    
+    // MARK: viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         ///entitlementsToggle.isOn = false
     }
     
+    
+    // MARK: Functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return settingsArray.count
@@ -60,7 +64,9 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             performSegue(withIdentifier: "logout", sender: self)
         }
     }
+}
     
+
 /*
     private func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
@@ -72,8 +78,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
    */
 
-
-}
 /*
 extension ViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

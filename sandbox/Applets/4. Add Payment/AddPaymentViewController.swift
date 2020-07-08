@@ -8,36 +8,14 @@
 
 import UIKit
 
-
 class AddPaymentViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        createButton()
-        print("ran!")
-        //AddingScreenViewController().cardDelegate = self
-
-        print(text)
-        confirmNum.text = text ?? "9452"
-        
-    }
+    
+    // MARK: Properties
     
     @IBOutlet weak var confirmationLabel: UILabel!
-    /*
-    override func viewWillAppear(_: Bool) {
-            super.viewWillAppear(true)
-
-            //call your data populating/API calls from here
-    }
-    
-    override func viewWillAppear(_ animated: Bool){
-        UIViewController.reloadData()
-    }
- */
     
     var text: String? {
-        didSet
-        {
+        didSet{
             updateLabel()
         }
     }
@@ -51,9 +29,22 @@ class AddPaymentViewController: UIViewController {
     @IBAction func changePayment(_ sender: UIButton) {
         showActionSheet()
     }
+
     
-    func updateLabel()
-    {
+    // MARK: viewDidLoad
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        createButton()
+        print("ran!")
+        //AddingScreenViewController().cardDelegate = self
+        confirmNum.text = text ?? "9452"
+    }
+    
+    
+    // MARK: Functions
+    
+    func updateLabel(){
         confirmNum.text = text
     }
     
@@ -102,17 +93,31 @@ class AddPaymentViewController: UIViewController {
         performSegue(withIdentifier: "payment", sender: self)
     }
     
-
-    
-    
 }
+
+// MARK: Delegate Function
 
 extension AddPaymentViewController: creditCardDelegate {
     func changePayment(cardNum: String) {
         confirmNum.text = cardNum
-        print(cardNum)
-        print(confirmNum)
-        //confirmNum.text = String (cardNum)
-        print("ran!!! \n")
     }
 }
+
+/*
+ print(cardNum)
+ print(confirmNum)
+ //confirmNum.text = String (cardNum)
+ print("ran!!! \n")
+ */
+
+   /*
+   override func viewWillAppear(_: Bool) {
+           super.viewWillAppear(true)
+
+           //call your data populating/API calls from here
+   }
+   
+   override func viewWillAppear(_ animated: Bool){
+       UIViewController.reloadData()
+   }
+*/

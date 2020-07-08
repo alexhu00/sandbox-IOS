@@ -9,10 +9,14 @@
 import UIKit
 
 class BrightTableViewCell: UITableViewCell {
+    
+    // MARK: Properties
 
     @IBOutlet weak var brightSlider: UISlider!
     
     var brightness: Int = 0
+    
+    var a11y = settings.a11yIsOn
     
     @IBOutlet weak var lilBright: UIImageView!
     
@@ -21,8 +25,16 @@ class BrightTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         brightness = Int(brightSlider.value)
-        // Initialization code
+        if (a11y) {
+            setA11y1()
+        }
+        else{
+            setA11y2()
+        }
     }
+    
+    
+    // MARK: Functions
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -30,7 +42,18 @@ class BrightTableViewCell: UITableViewCell {
         lilBright.image = (lilBright.image!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate))
         bigBright.tintColor = .init(red: 128/255, green: 128/255, blue: 128/255, alpha: 1)
         lilBright.tintColor = .init(red: 128/255, green: 128/255, blue: 128/255, alpha: 1)
-        // Configure the view for the selected state
     }
-
+    
+    func setA11y1() {
+        brightSlider.isAccessibilityElement = true
+        brightSlider.accessibilityLabel = "Brightness"
+        print("a11y true")
+    }
+    
+    func setA11y2() {
+        brightSlider.isAccessibilityElement = true
+        brightSlider.accessibilityLabel = "Slider"
+        print("a11y false")
+    }
+    
 }
