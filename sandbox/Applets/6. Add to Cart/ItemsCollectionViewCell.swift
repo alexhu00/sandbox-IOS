@@ -10,6 +10,12 @@ import UIKit
 
 class ItemsCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var itemImage: UIImageView!
+    
+    @IBOutlet weak var itemTitle: UILabel!
+    
+    @IBOutlet weak var itemPrice: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

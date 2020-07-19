@@ -22,7 +22,8 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
 
     var applets : [applet] = [
         applet(appletName: "Create Account", appletIcon: #imageLiteral(resourceName: "Icon Path"), segue: "applet1"),
-        applet(appletName: "Add Credit Card", appletIcon: #imageLiteral(resourceName: "icons8-credit-card-30"), segue: "applet2"),
+        applet(appletName: "Login", appletIcon: #imageLiteral(resourceName: "icons8-enter-30.png"), segue: "applet7"),
+        applet(appletName: "Add Credit Card", appletIcon: #imageLiteral(resourceName: "icons8-credit-card-30"), segue: "applet2"), applet(appletName: "Add to Cart", appletIcon: #imageLiteral(resourceName: "supermarket (2)"), segue: "applet6"),
     ]
 
     var UIapplets : [applet] = [
@@ -31,7 +32,7 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
 
     var contentApplets : [applet] = [
         applet(appletName: "Create Account", appletIcon: #imageLiteral(resourceName: "Combined Shape"), segue: "applet1"),
-        applet(appletName: "Add to Cart", appletIcon: #imageLiteral(resourceName: "Combined Shape"), segue: "applet2"),
+        applet(appletName: "Add to Cart", appletIcon: #imageLiteral(resourceName: "supermarket (2)"), segue: "applet2"),
     ]
 
     var entitlementsApplets : [applet] = [

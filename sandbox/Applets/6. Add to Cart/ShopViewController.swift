@@ -9,11 +9,25 @@
 
 import UIKit
 
-class ShopViewController: UIViewController {
+class ShopViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as? ItemsCollectionViewCell
+        
+        cell!.itemImage.image = #imageLiteral(resourceName: "a11y (1)")
+        cell!.itemTitle.text = "A11y Bot"
+        print(cell!.itemTitle.text)
+        cell!.itemPrice.text = "$3.00"
+        return cell!
+    }
+    
    
     // MARK: Functions
 
-    
     @IBOutlet weak var items: UICollectionView!
     
     override func viewDidLoad() {
@@ -22,33 +36,48 @@ class ShopViewController: UIViewController {
         items.delegate = self
         items.dataSource = self
         //setButtonContrainsts()
-
-        // Do any additional setup after loading the view.
     }
-}
 
-
-extension ShopViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-        print("you tapped me")
-    }
-}
-
-extension ShopViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
-    }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "", for: indexPath)
-        
-        return cell
-    }
-    
+
 }
+
+
 
 /*
+ func numberOfSections(in collectionView: UICollectionView) -> Int {
+     1
+ }
+ 
+ func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+     return 1
+ }
+ 
+ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as? ItemsCollectionViewCell else {
+         fatalError("The dequeued cell is not an instance of MealTableViewCell.")}
+     
+     cell.itemImage.image = #imageLiteral(resourceName: "a11y (1)")
+     cell.itemTitle.text = "A11y Bot"
+     cell.itemPrice.text = "$3.00"
+     return cell
+ }
+ 
+ 
+ 
+ extension ShopViewController: UICollectionViewDataSource {
+
+     
+ }
+ 
+ extension ShopViewController: UICollectionViewDelegate {
+     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+         collectionView.deselectItem(at: indexPath, animated: true)
+         print("you tapped me")
+     }
+ }
+ 
+ 
 extension ShopViewController: UICollectionViewFlowLayout{
     
 }
