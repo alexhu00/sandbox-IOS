@@ -36,6 +36,10 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var collectionOfLabels:[UILabel]!
     
+    @IBOutlet weak var termsOfService: UIButton!
+    
+    @IBOutlet weak var link: UIButton!
+    
     var errorMsg = UILabel()
     
     var a11y = false
@@ -49,10 +53,10 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         a11y = settings.a11yIsOn
         if (a11y){
-            setA11y1()
+            setA11yViolations()
         }
         else{
-            setA11y2()
+            setA11yCorrect()
         }
         createButton()
         username.delegate = self
@@ -64,41 +68,57 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     // MARK: Functions
     
     // Setting Correct a11y Features
-    func setA11y1() {
+    func setA11yCorrect() {
+        link.isHidden = true
         agree.isAccessibilityElement = true
         checkBox.isAccessibilityElement = true
+        Button.isAccessibilityElement = true
         agree.accessibilityLabel = "I Agree to the Mesmer Terms of Service and Privacy Policy"
         checkBox.accessibilityLabel = "Checkbox"
+        Button.accessibilityLabel = "Create Account"
         print("a11y true")
     }
     
     // Setting a11y Violations
-    func setA11y2() {
+    func setA11yViolations() {
         agree.isAccessibilityElement = true
         checkBox.isAccessibilityElement = true
+        Button.isAccessibilityElement = true
         checkBox.accessibilityLabel = "Checkbox"
         agree.accessibilityLabel = "I Agree to the Mesmer Terms of Service and Privacy Policy"
+        Button.accessibilityLabel = "Continue"
         collectionOfLabels[0].isHidden = true
         collectionOfLabels[1].isHidden = true
         collectionOfLabels[2].isHidden = true
+        //setTermsContrainsts()
+        termsOfService.isHidden = true
+        link.isHidden = false
         setAgreeContrainsts()
         setCheckboxContrainsts()
+        setLinkContrainsts()
         print("a11y false")
     }
 
     // Setting agreement statement constraints that violate a11y rules
     func setAgreeContrainsts() {
         agree.translatesAutoresizingMaskIntoConstraints = false
-        agree.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
+        agree.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 35).isActive = true
+        agree.text = "I agree to the Mesmer Terms of Service and Privacy Policy"
         //errorMsg.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 700).isActive = true
         //agree.centerYAnchor.constraint(equalTo: self.Button.bottomAnchor, constant: 50).isActive = true
     }
-    
+
+    func setLinkContrainsts() {
+        link.translatesAutoresizingMaskIntoConstraints = false
+        link.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 265).isActive = true
+    }
+    //link.isHidden = true
     // Setting checkbox constraints that violate a11y rules
     func setCheckboxContrainsts() {
         checkBox.translatesAutoresizingMaskIntoConstraints = false
+        checkBox.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 310).isActive = true
         //checkBox.leadingAnchor.constraint(equalTo: self.agree.trailingAnchor, constant: 15) = true
-        checkBox.leadingAnchor.constraint(equalTo: self.agree.leadingAnchor, constant: 245).isActive = true
+        //checkBox.leadingAnchor.constraint(equalTo: self.agree.leadingAnchor, constant: 245).isActive = true
     }
     
     // Allow user to dimiss keyboard by clicking return
@@ -124,7 +144,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         print("clicked!")
         if (a11y){
             if termsAgreed == true {
-                if (username.text != "" && password.text != "" && password.text == confirmPassword.text){
+                if (username.text?.count ?? 0 >= 6 && password.text?.count ?? 0 >= 6 && password.text == confirmPassword.text){
                     performSegue(withIdentifier: "createAccount", sender: self)
                     print("yeet")
                 }
@@ -139,16 +159,24 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         else {
             performSegue(withIdentifier: "createAccount", sender: self)
         }
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! LoginViewController
-        destinationVC.inputU = username.text
-        destinationVC.inputP = password.text
-        //destination
+        if segue.identifier == "createAccount" {
+            let destinationVC = segue.destination as! LoginViewController
+            destinationVC.inputU = username.text
+            destinationVC.inputP = password.text
+            //destination
+        }
     }
     
+    @IBAction func viewTerms(_ sender: UIButton) {
+        performSegue(withIdentifier: "terms", sender: self)
+    }
+    
+    @IBAction func linkTerms(_ sender: UIButton) {
+        performSegue(withIdentifier: "terms", sender: self)
+    }
     
     // Creating Buttton
     func createButton(){
@@ -177,9 +205,9 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         //errorMsg.titleLabel? = "Pleae enter a username and password"
         errorMsg.font = UIFont(name: "Roboto-Bold", size: 12.0)
         
-        if (username.text == "" || password.text == "" || confirmPassword.text == "" )
+        if (username.text?.count ?? 0 < 6 || password.text?.count ?? 0 < 6)
         {
-            errorMsg.text = "Please fill in all fields"
+            errorMsg.text = "Username and Password must be at least 6 characters"
         }
         else if (password.text != confirmPassword.text) {
             errorMsg.text = "Passwords do not match"
@@ -206,6 +234,13 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
 
 
 /*
+ 
+ func setTermsContrainsts() {
+     termsOfService.translatesAutoresizingMaskIntoConstraints = false
+     termsOfService.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 125).isActive = true
+ }
+ 
+ 
        UIView.transition(with: errorMsg,
                          duration: 5.0,
                              options: [.transitionCrossDissolve],

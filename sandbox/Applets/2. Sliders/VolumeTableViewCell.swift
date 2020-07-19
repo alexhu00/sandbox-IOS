@@ -8,6 +8,8 @@
 
 import UIKit
 
+var initialValue: Float = 0.50
+
 class VolumeTableViewCell: UITableViewCell {
     
     // MARK: Properties
@@ -21,37 +23,47 @@ class VolumeTableViewCell: UITableViewCell {
     @IBOutlet weak var bigVol: UIImageView!
     
     @IBOutlet weak var lilVol: UIImageView!
-    
-    // MARK: Functions
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        volumeSlider.value = initialValue
+        print("RAN")
         if (a11y) {
-            setA11y1()
+            setA11yViolations()
         }
         else{
-            setA11y2()
+            setA11yCorrect()
         }
     }
-
+    
+    // MARK: Functions
+    
+    func setA11yCorrect() {
+        //volumeSlider.value = initialValue
+        volumeSlider.isAccessibilityElement = true
+        volumeSlider.accessibilityLabel = "Volume"
+        volumeSlider.accessibilityHint = "Slide right to increase the volume"
+        print("a11y true")
+    }
+    
+    func setA11yViolations() {
+        //volumeSlider.value = initialValue
+        volumeSlider.isAccessibilityElement = true
+        volumeSlider.accessibilityLabel = "Slider"
+        volumeSlider.accessibilityHint = "Slide"
+        print("a11y false")
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        initialValue = volumeSlider.value
+        print(initialValue)
+        print("hi")
         bigVol.image = (bigVol.image!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate))
         lilVol.image = (lilVol.image!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate))
         bigVol.tintColor = .init(red: 128/255, green: 128/255, blue: 128/255, alpha: 1)
         lilVol.tintColor = .init(red: 128/255, green: 128/255, blue: 128/255, alpha: 1)
-    }
-    
-    func setA11y1() {
-        volumeSlider.isAccessibilityElement = true
-        volumeSlider.accessibilityLabel = "Volume"
-        print("a11y true")
-    }
-    
-    func setA11y2() {
-        volumeSlider.isAccessibilityElement = true
-        volumeSlider.accessibilityLabel = "Slider"
-        print("a11y false")
     }
     
 }

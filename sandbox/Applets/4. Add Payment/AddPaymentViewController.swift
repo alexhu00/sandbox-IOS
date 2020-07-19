@@ -41,7 +41,6 @@ class AddPaymentViewController: UIViewController {
         confirmNum.text = text ?? "9452"
     }
     
-    
     // MARK: Functions
     
     func updateLabel(){

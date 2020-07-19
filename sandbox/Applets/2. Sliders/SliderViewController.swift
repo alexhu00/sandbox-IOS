@@ -22,6 +22,7 @@ class SliderViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func moveSlider(_ sender: UISlider) {
         let currentValue = Int(sender.value*100)
+        initialValue = Float(currentValue)/100.0
         volumeLabel.text = "\(currentValue)"
     }
     
@@ -29,6 +30,7 @@ class SliderViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func moveSlider2(_ sender: UISlider) {
         let currentValue = Int(sender.value*100)
+        initialBrightnessValue = Float(currentValue)/100.0
         brightnessLabel.text = "\(currentValue)"
     }
     
@@ -45,7 +47,9 @@ class SliderViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        volumeLabel.text = String(Int(initialValue*100))
+        brightnessLabel.text = String(Int(initialBrightnessValue*100))
+    
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
         List.delegate = self

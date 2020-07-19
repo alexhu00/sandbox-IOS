@@ -8,6 +8,8 @@
 
 import UIKit
 
+var initialBrightnessValue: Float = 0.5
+
 class BrightTableViewCell: UITableViewCell {
     
     // MARK: Properties
@@ -25,35 +27,38 @@ class BrightTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         brightness = Int(brightSlider.value)
+        brightSlider.value = initialBrightnessValue
         if (a11y) {
-            setA11y1()
+            setA11yViolations()
         }
         else{
-            setA11y2()
+            setA11yCorrect()
         }
     }
     
     
     // MARK: Functions
 
+    func setA11yCorrect() {
+        brightSlider.isAccessibilityElement = true
+        brightSlider.accessibilityLabel = "Brightness"
+        brightSlider.accessibilityHint = "Slide right to increase the brightness"
+        print("a11y true")
+    }
+    
+    func setA11yViolations() {
+        brightSlider.isAccessibilityElement = true
+        brightSlider.accessibilityLabel = "Slider"
+        brightSlider.accessibilityHint = "Slide"
+        print("a11y false")
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         bigBright.image = (bigBright.image!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate))
         lilBright.image = (lilBright.image!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate))
         bigBright.tintColor = .init(red: 128/255, green: 128/255, blue: 128/255, alpha: 1)
         lilBright.tintColor = .init(red: 128/255, green: 128/255, blue: 128/255, alpha: 1)
-    }
-    
-    func setA11y1() {
-        brightSlider.isAccessibilityElement = true
-        brightSlider.accessibilityLabel = "Brightness"
-        print("a11y true")
-    }
-    
-    func setA11y2() {
-        brightSlider.isAccessibilityElement = true
-        brightSlider.accessibilityLabel = "Slider"
-        print("a11y false")
     }
     
 }

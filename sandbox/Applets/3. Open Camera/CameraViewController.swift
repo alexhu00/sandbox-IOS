@@ -54,7 +54,6 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
             alert.dismiss(animated:true, completion:nil)
         }))
         
-        
         alert.addAction(UIAlertAction(title:"Allow", style: UIAlertAction.Style.default, handler: { (action) in
             alert.dismiss(animated:true, completion:nil)
             self.cameraOpens()

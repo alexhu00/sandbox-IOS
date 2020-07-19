@@ -28,6 +28,8 @@ class AddingScreenViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var cvv: UITextField!
     
+    @IBOutlet weak var expiryDateLabel: UILabel!
+    
     @IBOutlet weak var saveInfoButton: UIButton!
 
     @IBOutlet weak var Button: UIButton!
@@ -39,6 +41,8 @@ class AddingScreenViewController: UIViewController, UITextFieldDelegate {
     var errorMsg = UILabel()
     
     var m: Int = 20
+    
+    var a11y = settings.a11yIsOn
     
     
     // MARK: viewDidLoad
@@ -60,7 +64,28 @@ class AddingScreenViewController: UIViewController, UITextFieldDelegate {
         m = Int(mmyy.text!.prefix(3)) ?? 25
         //print(m)
         //m = Int(mmyy.text!.suffix(2)) ?? 20
+        
+        if (a11y){
+            setA11yViolations()
+        }
+        else{
+            setA11yCorrect()
+        }
     }
+    
+    func setA11yCorrect() {
+        mmyy.isAccessibilityElement = true
+        mmyy.accessibilityLabel = "Enter data in MM/YY format"
+        print("a11y true")
+    }
+    
+    func setA11yViolations() {
+        mmyy.isAccessibilityElement = true
+        mmyy.accessibilityLabel = "Enter data"
+        expiryDateLabel.text = "Expiry Date"
+        print("a11y false")
+    }
+    
     
     
     // MARK: Functions
@@ -188,6 +213,11 @@ class AddingScreenViewController: UIViewController, UITextFieldDelegate {
         stringtoInt(input: sender.text ?? "0")
         //print(sender.text)
         //sender.text = self.modifyCreditCardString(creditCardString: sender.text!)
+    }
+    
+    // Dismiss modal
+    @IBAction func dismiss(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
     
     // Creating the Add Button
