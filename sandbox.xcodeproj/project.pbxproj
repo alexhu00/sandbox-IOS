@@ -20,18 +20,25 @@
 		A254A91324BCD5CD0082E042 /* ItemsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254A91224BCD5CD0082E042 /* ItemsListTableViewCell.swift */; };
 		A254A91524BD07970082E042 /* cartItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254A91424BD07970082E042 /* cartItems.swift */; };
 		A27CB3A324A3BA1C00BB3005 /* AppletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CB3A224A3BA1C00BB3005 /* AppletTableViewCell.swift */; };
+		A27EE07E24C637CF000B69E6 /* visualDiffsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27EE07D24C637CF000B69E6 /* visualDiffsTableViewCell.swift */; };
+		A27EE08024C63DB6000B69E6 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27EE07F24C63DB6000B69E6 /* TabBarViewController.swift */; };
+		A27EE08224C73F23000B69E6 /* editInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27EE08124C73F23000B69E6 /* editInfoViewController.swift */; };
 		A2860AFC24AE5C4900A2F5AE /* AddingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2860AFB24AE5C4900A2F5AE /* AddingScreenViewController.swift */; };
 		A2860AFE24AE7DAB00A2F5AE /* a11yTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2860AFD24AE7DAB00A2F5AE /* a11yTableViewCell.swift */; };
-		A2860B0024AE7F0D00A2F5AE /* entitlementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2860AFF24AE7F0D00A2F5AE /* entitlementTableViewCell.swift */; };
 		A293AB2224BFCFB60071DB4B /* PriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293AB2124BFCFB60071DB4B /* PriceTableViewCell.swift */; };
 		A293AB2524C0C8500071DB4B /* LoginAppletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293AB2424C0C8500071DB4B /* LoginAppletViewController.swift */; };
 		A293AB2724C0CBD70071DB4B /* successfulLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293AB2624C0CBD70071DB4B /* successfulLoginViewController.swift */; };
 		A293AB2924C0D48D0071DB4B /* dataResetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293AB2824C0D48D0071DB4B /* dataResetTableViewCell.swift */; };
+		A294536324C602CC001FA49B /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A294536224C602CC001FA49B /* RatingViewController.swift */; };
+		A294536524C602F3001FA49B /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A294536424C602F3001FA49B /* RatingControl.swift */; };
 		A2A67F6624B8BBB200179E1B /* ProductPgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A67F6524B8BBB200179E1B /* ProductPgViewController.swift */; };
 		A2A67F6824B8BBD000179E1B /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A67F6724B8BBD000179E1B /* ProductCollectionViewCell.swift */; };
 		A2A67F6A24B8BEC500179E1B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A67F6924B8BEC500179E1B /* Extensions.swift */; };
 		A2A67F6C24B96E7600179E1B /* SingleItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A67F6B24B96E7600179E1B /* SingleItemViewController.swift */; };
 		A2A7091324AD7D830032DD14 /* AddPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A7091224AD7D830032DD14 /* AddPaymentViewController.swift */; };
+		A2AA0CB424C4B4A400612758 /* AccountAppletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AA0CB324C4B4A400612758 /* AccountAppletViewController.swift */; };
+		A2AA0CBF24C4E4E800612758 /* contactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AA0CBE24C4E4E800612758 /* contactsViewController.swift */; };
+		A2AA0CC124C4ECE000612758 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AA0CC024C4ECE000612758 /* NavViewController.swift */; };
 		A2AD117E24B445360078CBBD /* settingsValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AD117D24B445360078CBBD /* settingsValues.swift */; };
 		A2AD118124B65C3D0078CBBD /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AD118024B65C3D0078CBBD /* LocationViewController.swift */; };
 		A2F3978D24A13B25008F3607 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F3978C24A13B25008F3607 /* AppDelegate.swift */; };
@@ -56,7 +63,6 @@
 		A2F397E024A1AC76008F3607 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2F397D424A1AC76008F3607 /* Roboto-Medium.ttf */; };
 		A2F397E124A1AC76008F3607 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2F397D524A1AC76008F3607 /* Roboto-Black.ttf */; };
 		A2F397E224A1AC76008F3607 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2F397D624A1AC76008F3607 /* Roboto-Bold.ttf */; };
-		A2F397ED24A1B8A5008F3607 /* Chivo-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2F397E424A1B8A5008F3607 /* Chivo-Italic.ttf */; };
 		A2F397EE24A1B8A5008F3607 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = A2F397E524A1B8A5008F3607 /* OFL.txt */; };
 		A2F397EF24A1B8A5008F3607 /* Chivo-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2F397E624A1B8A5008F3607 /* Chivo-BoldItalic.ttf */; };
 		A2F397F024A1B8A5008F3607 /* Chivo-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2F397E724A1B8A5008F3607 /* Chivo-LightItalic.ttf */; };
@@ -64,7 +70,6 @@
 		A2F397F224A1B8A5008F3607 /* Chivo-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2F397E924A1B8A5008F3607 /* Chivo-Black.ttf */; };
 		A2F397F324A1B8A5008F3607 /* Chivo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2F397EA24A1B8A5008F3607 /* Chivo-Bold.ttf */; };
 		A2F397F424A1B8A5008F3607 /* Chivo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2F397EB24A1B8A5008F3607 /* Chivo-Regular.ttf */; };
-		A2F397F524A1B8A5008F3607 /* Chivo-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2F397EC24A1B8A5008F3607 /* Chivo-BlackItalic.ttf */; };
 		A2F397F724A1C0FD008F3607 /* VesselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F397F624A1C0FD008F3607 /* VesselViewController.swift */; };
 		A2F397F924A26D6C008F3607 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F397F824A26D6C008F3607 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -93,18 +98,25 @@
 		A254A91224BCD5CD0082E042 /* ItemsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListTableViewCell.swift; sourceTree = "<group>"; };
 		A254A91424BD07970082E042 /* cartItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cartItems.swift; sourceTree = "<group>"; };
 		A27CB3A224A3BA1C00BB3005 /* AppletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppletTableViewCell.swift; sourceTree = "<group>"; };
+		A27EE07D24C637CF000B69E6 /* visualDiffsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = visualDiffsTableViewCell.swift; sourceTree = "<group>"; };
+		A27EE07F24C63DB6000B69E6 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		A27EE08124C73F23000B69E6 /* editInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editInfoViewController.swift; sourceTree = "<group>"; };
 		A2860AFB24AE5C4900A2F5AE /* AddingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingScreenViewController.swift; sourceTree = "<group>"; };
 		A2860AFD24AE7DAB00A2F5AE /* a11yTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = a11yTableViewCell.swift; sourceTree = "<group>"; };
-		A2860AFF24AE7F0D00A2F5AE /* entitlementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = entitlementTableViewCell.swift; sourceTree = "<group>"; };
 		A293AB2124BFCFB60071DB4B /* PriceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTableViewCell.swift; sourceTree = "<group>"; };
 		A293AB2424C0C8500071DB4B /* LoginAppletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAppletViewController.swift; sourceTree = "<group>"; };
 		A293AB2624C0CBD70071DB4B /* successfulLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = successfulLoginViewController.swift; sourceTree = "<group>"; };
 		A293AB2824C0D48D0071DB4B /* dataResetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataResetTableViewCell.swift; sourceTree = "<group>"; };
+		A294536224C602CC001FA49B /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
+		A294536424C602F3001FA49B /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		A2A67F6524B8BBB200179E1B /* ProductPgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPgViewController.swift; sourceTree = "<group>"; };
 		A2A67F6724B8BBD000179E1B /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2A67F6924B8BEC500179E1B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A2A67F6B24B96E7600179E1B /* SingleItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleItemViewController.swift; sourceTree = "<group>"; };
 		A2A7091224AD7D830032DD14 /* AddPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentViewController.swift; sourceTree = "<group>"; };
+		A2AA0CB324C4B4A400612758 /* AccountAppletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAppletViewController.swift; sourceTree = "<group>"; };
+		A2AA0CBE24C4E4E800612758 /* contactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contactsViewController.swift; sourceTree = "<group>"; };
+		A2AA0CC024C4ECE000612758 /* NavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		A2AD117D24B445360078CBBD /* settingsValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsValues.swift; sourceTree = "<group>"; };
 		A2AD118024B65C3D0078CBBD /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		A2F3978924A13B25008F3607 /* sandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,7 +145,6 @@
 		A2F397D424A1AC76008F3607 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Medium.ttf"; path = "../../../../../../Downloads/Roboto/Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		A2F397D524A1AC76008F3607 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Black.ttf"; path = "../../../../../../Downloads/Roboto/Roboto-Black.ttf"; sourceTree = "<group>"; };
 		A2F397D624A1AC76008F3607 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "../../../../../../Downloads/Roboto/Roboto-Bold.ttf"; sourceTree = "<group>"; };
-		A2F397E424A1B8A5008F3607 /* Chivo-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Chivo-Italic.ttf"; path = "../../../../../../Downloads/Chivo/Chivo-Italic.ttf"; sourceTree = "<group>"; };
 		A2F397E524A1B8A5008F3607 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = OFL.txt; path = ../../../../../../Downloads/Chivo/OFL.txt; sourceTree = "<group>"; };
 		A2F397E624A1B8A5008F3607 /* Chivo-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Chivo-BoldItalic.ttf"; path = "../../../../../../Downloads/Chivo/Chivo-BoldItalic.ttf"; sourceTree = "<group>"; };
 		A2F397E724A1B8A5008F3607 /* Chivo-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Chivo-LightItalic.ttf"; path = "../../../../../../Downloads/Chivo/Chivo-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -141,7 +152,6 @@
 		A2F397E924A1B8A5008F3607 /* Chivo-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Chivo-Black.ttf"; path = "../../../../../../Downloads/Chivo/Chivo-Black.ttf"; sourceTree = "<group>"; };
 		A2F397EA24A1B8A5008F3607 /* Chivo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Chivo-Bold.ttf"; path = "../../../../../../Downloads/Chivo/Chivo-Bold.ttf"; sourceTree = "<group>"; };
 		A2F397EB24A1B8A5008F3607 /* Chivo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Chivo-Regular.ttf"; path = "../../../../../../Downloads/Chivo/Chivo-Regular.ttf"; sourceTree = "<group>"; };
-		A2F397EC24A1B8A5008F3607 /* Chivo-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Chivo-BlackItalic.ttf"; path = "../../../../../../Downloads/Chivo/Chivo-BlackItalic.ttf"; sourceTree = "<group>"; };
 		A2F397F624A1C0FD008F3607 /* VesselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesselViewController.swift; sourceTree = "<group>"; };
 		A2F397F824A26D6C008F3607 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -199,6 +209,8 @@
 		A239EDDB24AB9D1A0093EC69 /* Applets */ = {
 			isa = PBXGroup;
 			children = (
+				A2AA0CC024C4ECE000612758 /* NavViewController.swift */,
+				A27EE07F24C63DB6000B69E6 /* TabBarViewController.swift */,
 				A239EDC424A900E00093EC69 /* 1. Create Account */,
 				A239EDD924AB9CCB0093EC69 /* 2. Sliders */,
 				A239EDDE24ABEC7F0093EC69 /* 3. Open Camera */,
@@ -206,6 +218,9 @@
 				A2AD117F24B65C100078CBBD /* 5. Location */,
 				A2EE4F0A24A6743E0086E455 /* 6. Add to Cart */,
 				A293AB2324C0C8320071DB4B /* 7. Login */,
+				A2AA0CB524C4B4B500612758 /* 8. Account Settings */,
+				A2AA0CBB24C4E46F00612758 /* 9. Contacts Permission */,
+				A294536124C602A7001FA49B /* 10. Rating Stars */,
 			);
 			path = Applets;
 			sourceTree = "<group>";
@@ -227,6 +242,15 @@
 			path = "7. Login";
 			sourceTree = "<group>";
 		};
+		A294536124C602A7001FA49B /* 10. Rating Stars */ = {
+			isa = PBXGroup;
+			children = (
+				A294536224C602CC001FA49B /* RatingViewController.swift */,
+				A294536424C602F3001FA49B /* RatingControl.swift */,
+			);
+			path = "10. Rating Stars";
+			sourceTree = "<group>";
+		};
 		A2A7091424ADAA7E0032DD14 /* 4. Add Payment */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +258,53 @@
 				A2860AFB24AE5C4900A2F5AE /* AddingScreenViewController.swift */,
 			);
 			path = "4. Add Payment";
+			sourceTree = "<group>";
+		};
+		A2AA0CB524C4B4B500612758 /* 8. Account Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A2AA0CB324C4B4A400612758 /* AccountAppletViewController.swift */,
+				A27EE08124C73F23000B69E6 /* editInfoViewController.swift */,
+			);
+			path = "8. Account Settings";
+			sourceTree = "<group>";
+		};
+		A2AA0CB824C4D86C00612758 /* Collection View */ = {
+			isa = PBXGroup;
+			children = (
+				A2A67F6524B8BBB200179E1B /* ProductPgViewController.swift */,
+				A2A67F6724B8BBD000179E1B /* ProductCollectionViewCell.swift */,
+				A2A67F6924B8BEC500179E1B /* Extensions.swift */,
+			);
+			path = "Collection View";
+			sourceTree = "<group>";
+		};
+		A2AA0CB924C4D88700612758 /* Single Product Pg */ = {
+			isa = PBXGroup;
+			children = (
+				A2A67F6B24B96E7600179E1B /* SingleItemViewController.swift */,
+			);
+			path = "Single Product Pg";
+			sourceTree = "<group>";
+		};
+		A2AA0CBA24C4D88D00612758 /* Cart Pg */ = {
+			isa = PBXGroup;
+			children = (
+				A254A90E24BCD52E0082E042 /* CartViewController.swift */,
+				A254A91024BCD5BF0082E042 /* HeaderCartTableViewCell.swift */,
+				A254A91224BCD5CD0082E042 /* ItemsListTableViewCell.swift */,
+				A293AB2124BFCFB60071DB4B /* PriceTableViewCell.swift */,
+				A254A91424BD07970082E042 /* cartItems.swift */,
+			);
+			path = "Cart Pg";
+			sourceTree = "<group>";
+		};
+		A2AA0CBB24C4E46F00612758 /* 9. Contacts Permission */ = {
+			isa = PBXGroup;
+			children = (
+				A2AA0CBE24C4E4E800612758 /* contactsViewController.swift */,
+			);
+			path = "9. Contacts Permission";
 			sourceTree = "<group>";
 		};
 		A2AD117F24B65C100078CBBD /* 5. Location */ = {
@@ -293,10 +364,10 @@
 			isa = PBXGroup;
 			children = (
 				A2F397F824A26D6C008F3607 /* SettingsViewController.swift */,
-				A2860AFF24AE7F0D00A2F5AE /* entitlementTableViewCell.swift */,
 				A2860AFD24AE7DAB00A2F5AE /* a11yTableViewCell.swift */,
-				A2AD117D24B445360078CBBD /* settingsValues.swift */,
+				A27EE07D24C637CF000B69E6 /* visualDiffsTableViewCell.swift */,
 				A293AB2824C0D48D0071DB4B /* dataResetTableViewCell.swift */,
+				A2AD117D24B445360078CBBD /* settingsValues.swift */,
 			);
 			path = "4. Settings Page";
 			sourceTree = "<group>";
@@ -304,15 +375,9 @@
 		A2EE4F0A24A6743E0086E455 /* 6. Add to Cart */ = {
 			isa = PBXGroup;
 			children = (
-				A2A67F6524B8BBB200179E1B /* ProductPgViewController.swift */,
-				A2A67F6724B8BBD000179E1B /* ProductCollectionViewCell.swift */,
-				A2A67F6924B8BEC500179E1B /* Extensions.swift */,
-				A2A67F6B24B96E7600179E1B /* SingleItemViewController.swift */,
-				A254A90E24BCD52E0082E042 /* CartViewController.swift */,
-				A254A91024BCD5BF0082E042 /* HeaderCartTableViewCell.swift */,
-				A254A91224BCD5CD0082E042 /* ItemsListTableViewCell.swift */,
-				A254A91424BD07970082E042 /* cartItems.swift */,
-				A293AB2124BFCFB60071DB4B /* PriceTableViewCell.swift */,
+				A2AA0CB824C4D86C00612758 /* Collection View */,
+				A2AA0CB924C4D88700612758 /* Single Product Pg */,
+				A2AA0CBA24C4D88D00612758 /* Cart Pg */,
 			);
 			path = "6. Add to Cart";
 			sourceTree = "<group>";
@@ -382,10 +447,8 @@
 			isa = PBXGroup;
 			children = (
 				A2F397E924A1B8A5008F3607 /* Chivo-Black.ttf */,
-				A2F397EC24A1B8A5008F3607 /* Chivo-BlackItalic.ttf */,
 				A2F397EA24A1B8A5008F3607 /* Chivo-Bold.ttf */,
 				A2F397E624A1B8A5008F3607 /* Chivo-BoldItalic.ttf */,
-				A2F397E424A1B8A5008F3607 /* Chivo-Italic.ttf */,
 				A2F397E824A1B8A5008F3607 /* Chivo-Light.ttf */,
 				A2F397E724A1B8A5008F3607 /* Chivo-LightItalic.ttf */,
 				A2F397EB24A1B8A5008F3607 /* Chivo-Regular.ttf */,
@@ -477,7 +540,6 @@
 			files = (
 				A2F397EE24A1B8A5008F3607 /* OFL.txt in Resources */,
 				A2F397E024A1AC76008F3607 /* Roboto-Medium.ttf in Resources */,
-				A2F397F524A1B8A5008F3607 /* Chivo-BlackItalic.ttf in Resources */,
 				A2F3979924A13B2C008F3607 /* LaunchScreen.storyboard in Resources */,
 				A2F397E224A1AC76008F3607 /* Roboto-Bold.ttf in Resources */,
 				A2F397DC24A1AC76008F3607 /* Roboto-Italic.ttf in Resources */,
@@ -487,7 +549,6 @@
 				A2F397EF24A1B8A5008F3607 /* Chivo-BoldItalic.ttf in Resources */,
 				A2F397D924A1AC76008F3607 /* Roboto-Light.ttf in Resources */,
 				A2F397DB24A1AC76008F3607 /* Roboto-ThinItalic.ttf in Resources */,
-				A2F397ED24A1B8A5008F3607 /* Chivo-Italic.ttf in Resources */,
 				A2F397F024A1B8A5008F3607 /* Chivo-LightItalic.ttf in Resources */,
 				A2F397F324A1B8A5008F3607 /* Chivo-Bold.ttf in Resources */,
 				A2F397F224A1B8A5008F3607 /* Chivo-Black.ttf in Resources */,
@@ -519,6 +580,7 @@
 				A2A67F6624B8BBB200179E1B /* ProductPgViewController.swift in Sources */,
 				A254A91524BD07970082E042 /* cartItems.swift in Sources */,
 				A239EDC624A90F690093EC69 /* LoginViewController.swift in Sources */,
+				A2AA0CBF24C4E4E800612758 /* contactsViewController.swift in Sources */,
 				A27CB3A324A3BA1C00BB3005 /* AppletTableViewCell.swift in Sources */,
 				A2860AFE24AE7DAB00A2F5AE /* a11yTableViewCell.swift in Sources */,
 				A254A90D24BCCB0C0082E042 /* TermsViewController.swift in Sources */,
@@ -527,8 +589,10 @@
 				A2A67F6824B8BBD000179E1B /* ProductCollectionViewCell.swift in Sources */,
 				A293AB2224BFCFB60071DB4B /* PriceTableViewCell.swift in Sources */,
 				A239EDC324A900DB0093EC69 /* CreateAccountViewController.swift in Sources */,
+				A27EE07E24C637CF000B69E6 /* visualDiffsTableViewCell.swift in Sources */,
 				A239EDCE24AA8D1E0093EC69 /* SliderViewController.swift in Sources */,
 				A293AB2924C0D48D0071DB4B /* dataResetTableViewCell.swift in Sources */,
+				A2AA0CC124C4ECE000612758 /* NavViewController.swift in Sources */,
 				A2F3979124A13B25008F3607 /* ViewController.swift in Sources */,
 				A2F3978D24A13B25008F3607 /* AppDelegate.swift in Sources */,
 				A239EDD424AA9EA80093EC69 /* VolumeTableViewCell.swift in Sources */,
@@ -542,14 +606,18 @@
 				A2F397B324A147F0008F3607 /* continueSegue.swift in Sources */,
 				A293AB2524C0C8500071DB4B /* LoginAppletViewController.swift in Sources */,
 				A2F397B524A14BD1008F3607 /* ContinueScreenViewController.swift in Sources */,
+				A294536524C602F3001FA49B /* RatingControl.swift in Sources */,
 				A2A67F6C24B96E7600179E1B /* SingleItemViewController.swift in Sources */,
+				A27EE08024C63DB6000B69E6 /* TabBarViewController.swift in Sources */,
 				A293AB2724C0CBD70071DB4B /* successfulLoginViewController.swift in Sources */,
+				A294536324C602CC001FA49B /* RatingViewController.swift in Sources */,
 				A2F397F924A26D6C008F3607 /* SettingsViewController.swift in Sources */,
 				A2A67F6A24B8BEC500179E1B /* Extensions.swift in Sources */,
+				A2AA0CB424C4B4A400612758 /* AccountAppletViewController.swift in Sources */,
 				A239EDC824AA4F350093EC69 /* SuccessViewController.swift in Sources */,
 				A254A91124BCD5BF0082E042 /* HeaderCartTableViewCell.swift in Sources */,
 				A239EDDD24AB9E750093EC69 /* CameraViewController.swift in Sources */,
-				A2860B0024AE7F0D00A2F5AE /* entitlementTableViewCell.swift in Sources */,
+				A27EE08224C73F23000B69E6 /* editInfoViewController.swift in Sources */,
 				A2AD117E24B445360078CBBD /* settingsValues.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

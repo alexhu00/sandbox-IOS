@@ -56,6 +56,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "header", for: indexPath)
+            cell.selectionStyle = .none
             return cell
         }
         else if indexPath.row >= 1 && indexPath.row <= cartItems.productList.count {
@@ -77,6 +78,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             //cell.accessoryType = minus
             
             totalPrice += Double(itemPriceCalcuated)!
+            
+            cell.selectionStyle = .none
             return cell
         }
         else {
@@ -90,7 +93,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             let totalAmt = String(format: "%.2f", Double(totalPrice + 9.00))
             
             cell.estimatedTotal.text = "$\(totalAmt)"
-
+            
+            cell.selectionStyle = .none
             return cell
         }
     }

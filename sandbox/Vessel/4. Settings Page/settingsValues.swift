@@ -10,4 +10,5 @@ import Foundation
 
 struct settings{
     static var a11yIsOn = false
+    static var visualDiffsOn = false
 }
