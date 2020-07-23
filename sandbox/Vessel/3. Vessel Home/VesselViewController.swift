@@ -23,7 +23,10 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
     var applets : [applet] = [
         applet(appletName: "Create Account", appletIcon: #imageLiteral(resourceName: "Icon Path"), segue: "applet1"),
         applet(appletName: "Login", appletIcon: #imageLiteral(resourceName: "icons8-enter-30.png"), segue: "applet7"),
-        applet(appletName: "Add Credit Card", appletIcon: #imageLiteral(resourceName: "icons8-credit-card-30"), segue: "applet2"), applet(appletName: "Add to Cart", appletIcon: #imageLiteral(resourceName: "supermarket (2)"), segue: "applet6"),
+        applet(appletName: "Add Credit Card", appletIcon: #imageLiteral(resourceName: "icons8-credit-card-30"), segue: "applet2"),
+        applet(appletName: "Add to Cart", appletIcon: #imageLiteral(resourceName: "supermarket (2)"), segue: "applet6"),
+        applet(appletName: "Account Settings", appletIcon: #imageLiteral(resourceName: "Icon Shape"), segue: "applet8"),
+        applet(appletName: "Rating Stars", appletIcon: #imageLiteral(resourceName: "icons8-star-50 (1)"), segue: "applet10")
     ]
 
     var UIapplets : [applet] = [
@@ -38,6 +41,7 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
     var entitlementsApplets : [applet] = [
         applet(appletName: "Open Camera", appletIcon: #imageLiteral(resourceName: "icons8-camera-30"), segue: "applet4"),
         applet(appletName: "Location", appletIcon: #imageLiteral(resourceName: "icons8-marker-31"), segue: "applet5"),
+        applet(appletName: "Access Contacts", appletIcon: #imageLiteral(resourceName: "icons8-bookmark-30"), segue: "applet9")
     ]
     
     lazy var appletsFullList = [applets, UIapplets, entitlementsApplets] // add contentApplets later
@@ -47,6 +51,10 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var Filter: UIButton!
     
     @IBOutlet weak var search: UISearchBar!
+    
+    @IBOutlet weak var searchIconViolation: UIImageView!
+    
+    @IBOutlet weak var headerMesmerLogo: UIImageView!
     
     var sectionSearch = [String]()
     
@@ -60,6 +68,9 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
     
     var searchEntitlemnts = [applet]()
     
+    var a11y = false
+    
+    var visualDiffs = false
     
     // MARK: viewDidLoad
 
@@ -71,10 +82,69 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
         List.rowHeight = UITableView.automaticDimension
         List.estimatedRowHeight = 500
         search.delegate = self
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default) //UIImage.init(named: "transparent.png")
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+        setA11yCorrect()
+        //self.tab
     }
     
-
+    override func viewDidAppear(_ animated: Bool) {
+        a11y = settings.a11yIsOn
+        if (a11y){
+            setA11yViolations()
+        }
+        else{
+            setA11yCorrect()
+        }
+        visualDiffs = settings.visualDiffsOn
+        if (visualDiffs){
+            visualDifferences()
+        }
+        else{
+            originalVisual()
+        }
+    }
+    
     // MARK: Functions
+    
+    func visualDifferences(){
+        headerMesmerLogo.image = #imageLiteral(resourceName: "mesmerHeader")
+        appletsFullList[0][3].appletIcon = #imageLiteral(resourceName: "icons8-shopping-cart-30")
+        List.reloadData()
+        self.tabBarItem.image = #imageLiteral(resourceName: "homeCombined Shape")
+        self.tabBarItem.selectedImage = #imageLiteral(resourceName: "homeCombined Shape")
+        /*
+        homeIcon.image = #imageLiteral(resourceName: "icons8-bookmark-30")
+        homeIcon.selectedImage = #imageLiteral(resourceName: "icons8-bookmark-30")
+ */
+    }
+    func originalVisual(){
+        headerMesmerLogo.image = #imageLiteral(resourceName: "Screen Shot 2020-06-30 at 3.32.58 PM")
+        appletsFullList[0][3].appletIcon = #imageLiteral(resourceName: "supermarket (2)")
+        List.reloadData()
+        /*
+        homeIcon.image = #imageLiteral(resourceName: "homeCombined Shape")
+        homeIcon.selectedImage = #imageLiteral(resourceName: "homeCombined Shape")
+    */
+    }
+    
+    // Setting Correct a11y Features
+    func setA11yCorrect() {
+        if let textFieldInsideSearchBar = self.search.value(forKey: "searchField") as? UITextField {
+            textFieldInsideSearchBar.leftView?.isHidden = false
+        }
+        searchIconViolation.isHidden = true
+    }
+    
+    // Setting a11y Violations
+    func setA11yViolations() {
+        if let textFieldInsideSearchBar = self.search.value(forKey: "searchField") as? UITextField {
+            textFieldInsideSearchBar.leftView?.isHidden = true
+        }
+        searchIconViolation.isHidden = false
+    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         search.resignFirstResponder()

@@ -45,6 +45,8 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     var a11y = false
 
     var termsAgreed = false
+    
+    var correctA11y = true
 
     
     // MARK: viewDidLoad
@@ -96,6 +98,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         setAgreeContrainsts()
         setCheckboxContrainsts()
         setLinkContrainsts()
+        correctA11y = false  // for the error messages
         print("a11y false")
     }
 
@@ -139,12 +142,19 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // Validate email
+    func isValidEmail(input:String) -> Bool{
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailTest.evaluate(with: input)
+    }
+    
     // Create account action
     @IBAction func createAccount(_ sender: UIButton) {
         print("clicked!")
-        if (a11y){
+        if (correctA11y){
             if termsAgreed == true {
-                if (username.text?.count ?? 0 >= 6 && password.text?.count ?? 0 >= 6 && password.text == confirmPassword.text){
+                if (isValidEmail(input: username.text!) && password.text?.count ?? 0 >= 6 && password.text == confirmPassword.text){
                     performSegue(withIdentifier: "createAccount", sender: self)
                     print("yeet")
                 }
@@ -205,9 +215,12 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         //errorMsg.titleLabel? = "Pleae enter a username and password"
         errorMsg.font = UIFont(name: "Roboto-Bold", size: 12.0)
         
-        if (username.text?.count ?? 0 < 6 || password.text?.count ?? 0 < 6)
+        if (!isValidEmail(input: username.text!)){
+            errorMsg.text = "Invalid Email"
+        }
+        else if (password.text?.count ?? 0 < 6)
         {
-            errorMsg.text = "Username and Password must be at least 6 characters"
+            errorMsg.text = "Password must be at least 6 characters"
         }
         else if (password.text != confirmPassword.text) {
             errorMsg.text = "Passwords do not match"

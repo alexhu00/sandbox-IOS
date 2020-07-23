@@ -61,7 +61,7 @@ class LoginAppletViewController: UIViewController, UITextFieldDelegate {
         button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 450).isActive = true
+        //button.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 450).isActive = true
     }
     
     func createErrorMsg(){

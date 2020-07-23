@@ -14,7 +14,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     let settingsArray = ["Logout", "Accessibility Mode", "Entitlement Alerts", "Reset App Data"]
     
-    let toggles = ["Accessibility Mode", "Entitlement Alerts"]
+    let toggles = ["Accessibility Mode", "Visual Differences"]
     
     let actions = ["Logout", "Reset App Data"]
 
@@ -27,6 +27,10 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         //a11yToggle.isOn = false
         ///entitlementsToggle.isOn = false
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default) //UIImage.init(named: "transparent.png")
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
     }
     
     
@@ -78,7 +82,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 print("good")
             }
             else{
-                cellIdentifier = "entitlementsCell"
+                cellIdentifier = "visualDiffsCell"
                 print("gr8")
             }
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
