@@ -8,15 +8,11 @@
 
 import UIKit
 
-var initialBrightnessValue: Float = 0.5
-
 class BrightTableViewCell: UITableViewCell {
     
     // MARK: Properties
 
     @IBOutlet weak var brightSlider: UISlider!
-    
-    var brightness: Int = 0
     
     var a11y = settings.a11yIsOn
     
@@ -26,13 +22,18 @@ class BrightTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        brightness = Int(brightSlider.value)
-        brightSlider.value = initialBrightnessValue
+
         if (a11y) {
             setA11yViolations()
         }
         else{
             setA11yCorrect()
+        }
+        
+        // Update the brightness SLIDER to the value that was last set by user
+        let defaults = UserDefaults.standard
+        if (defaults.bool(forKey: keys.brightChanged)){
+            brightSlider.value = defaults.float(forKey: keys.brightLevel)
         }
     }
     

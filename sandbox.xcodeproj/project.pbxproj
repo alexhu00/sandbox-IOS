@@ -40,6 +40,7 @@
 		A26067B324CA5F3200C93869 /* Chivo-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A26067AA24CA5F3200C93869 /* Chivo-Italic.ttf */; };
 		A26067B424CA5F3200C93869 /* Chivo-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A26067AB24CA5F3200C93869 /* Chivo-BoldItalic.ttf */; };
 		A26067B524CA5F3200C93869 /* Chivo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A26067AC24CA5F3200C93869 /* Chivo-Regular.ttf */; };
+		A26067DF24CB42E500C93869 /* userDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26067DE24CB42E500C93869 /* userDefaultKeys.swift */; };
 		A27CB3A324A3BA1C00BB3005 /* AppletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CB3A224A3BA1C00BB3005 /* AppletTableViewCell.swift */; };
 		A27EE07E24C637CF000B69E6 /* visualDiffsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27EE07D24C637CF000B69E6 /* visualDiffsTableViewCell.swift */; };
 		A27EE08024C63DB6000B69E6 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27EE07F24C63DB6000B69E6 /* TabBarViewController.swift */; };
@@ -120,6 +121,7 @@
 		A26067AA24CA5F3200C93869 /* Chivo-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Chivo-Italic.ttf"; sourceTree = "<group>"; };
 		A26067AB24CA5F3200C93869 /* Chivo-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Chivo-BoldItalic.ttf"; sourceTree = "<group>"; };
 		A26067AC24CA5F3200C93869 /* Chivo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Chivo-Regular.ttf"; sourceTree = "<group>"; };
+		A26067DE24CB42E500C93869 /* userDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userDefaultKeys.swift; sourceTree = "<group>"; };
 		A27CB3A224A3BA1C00BB3005 /* AppletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppletTableViewCell.swift; sourceTree = "<group>"; };
 		A27EE07D24C637CF000B69E6 /* visualDiffsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = visualDiffsTableViewCell.swift; sourceTree = "<group>"; };
 		A27EE07F24C63DB6000B69E6 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				A2AA0CB524C4B4B500612758 /* 8. Account Settings */,
 				A2AA0CBB24C4E46F00612758 /* 9. Contacts Permission */,
 				A294536124C602A7001FA49B /* 10. Rating Stars */,
+				A26067DE24CB42E500C93869 /* userDefaultKeys.swift */,
 			);
 			path = Applets;
 			sourceTree = "<group>";
@@ -624,6 +627,7 @@
 				A2AA0CB424C4B4A400612758 /* AccountAppletViewController.swift in Sources */,
 				A239EDC824AA4F350093EC69 /* SuccessViewController.swift in Sources */,
 				A254A91124BCD5BF0082E042 /* HeaderCartTableViewCell.swift in Sources */,
+				A26067DF24CB42E500C93869 /* userDefaultKeys.swift in Sources */,
 				A239EDDD24AB9E750093EC69 /* CameraViewController.swift in Sources */,
 				A27EE08224C73F23000B69E6 /* editInfoViewController.swift in Sources */,
 				A2AD117E24B445360078CBBD /* settingsValues.swift in Sources */,

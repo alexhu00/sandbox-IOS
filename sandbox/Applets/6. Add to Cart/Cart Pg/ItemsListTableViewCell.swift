@@ -44,6 +44,7 @@ class ItemsListTableViewCell: UITableViewCell {
         UIView.transition(with: self.itemQty, duration: 0.5, options: .transitionCurlUp, animations: {
             
             cartItems.productList[indexPath!.row - 1].qty += 1
+            cartItems.productQty[indexPath!.row - 1] += 1
             self.itemQty.text = String(cartItems.productList[indexPath!.row - 1].qty)
             
         }, completion: nil)
@@ -85,6 +86,7 @@ class ItemsListTableViewCell: UITableViewCell {
             let itemQuantity = cartItems.productList[indexPath!.row - 1].qty
             if itemQuantity > 0 {
                 cartItems.productList[indexPath!.row - 1].qty -= 1
+                cartItems.productQty[indexPath!.row - 1] -= 1
                 self.itemQty.text = String(cartItems.productList[indexPath!.row - 1].qty)
             }
             
@@ -124,6 +126,8 @@ class ItemsListTableViewCell: UITableViewCell {
             // Remove row from table
             cartItems.productList.remove(at: indexPath!.row - 1)
             cartItems.listofProducts.remove(at: indexPath!.row - 1)
+            cartItems.productQty.remove(at: indexPath!.row - 1)
+            cartItems.productPrice.remove(at: indexPath!.row - 1)
             cartItems.findTotalCount()
             vc!.table.beginUpdates()
             vc!.table.deleteRows(at: [indexPath!], with: .automatic)

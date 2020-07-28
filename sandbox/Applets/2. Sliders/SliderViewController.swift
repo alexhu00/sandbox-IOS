@@ -22,41 +22,59 @@ class SliderViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func moveSlider(_ sender: UISlider) {
         let currentValue = Int(sender.value*100)
-        initialValue = Float(currentValue)/100.0
         volumeLabel.text = "\(currentValue)"
+        
+        // Save values into User Defaults
+        let defaults = UserDefaults.standard
+        defaults.set(sender.value, forKey: keys.volumeLevel)
+        defaults.set(true, forKey: keys.volumeChanged)
     }
     
     @IBOutlet weak var brightnessLabel: UILabel!
     
     @IBAction func moveSlider2(_ sender: UISlider) {
         let currentValue = Int(sender.value*100)
-        initialBrightnessValue = Float(currentValue)/100.0
         brightnessLabel.text = "\(currentValue)"
+        
+        // Save values into User Defaults
+        let defaults = UserDefaults.standard
+        defaults.set(sender.value, forKey: keys.brightLevel)
+        defaults.set(true, forKey: keys.brightChanged)
     }
     
     @IBOutlet weak var List: UITableView!
     
     var a11y = settings.a11yIsOn
     
-    var volume = 0
-    
-    var brightness = 0
     
 
     // MARK: viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        volumeLabel.text = String(Int(initialValue*100))
-        brightnessLabel.text = String(Int(initialBrightnessValue*100))
-    
+        
+        // Update the volume LABEL to the value that was last set by user
+        let defaults = UserDefaults.standard
+        if (defaults.bool(forKey: keys.volumeChanged)){
+            volumeLabel.text = String(Int(defaults.float(forKey: keys.volumeLevel)*100))
+        }
+        else{
+            volumeLabel.text = "50"
+        }
+        
+        // Update the brightness LABEL to the value that was last set by user
+        if (defaults.bool(forKey: keys.brightChanged)){
+            brightnessLabel.text = String(Int(defaults.float(forKey: keys.brightLevel)*100))
+        }
+        else{
+            brightnessLabel.text = "50"
+        }
+        
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
         List.delegate = self
         List.dataSource = self
         List.isScrollEnabled = false
-        //volume = VolumeTableViewCell.volume
-        //brightness = BrightTableViewCell.brightness
 
     }
     
@@ -80,8 +98,6 @@ class SliderViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // Tableview Cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        //cellIdentifier = "sliderCell"
        
         if(indexPath.section == 0){
             cellIdentifier = "sliderCell"

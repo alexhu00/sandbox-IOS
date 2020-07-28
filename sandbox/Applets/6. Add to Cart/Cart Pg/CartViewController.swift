@@ -61,14 +61,36 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         else if indexPath.row >= 1 && indexPath.row <= cartItems.productList.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: "itemList", for: indexPath) as! ItemsListTableViewCell
-            cell.itemImage.image = cartItems.productList[indexPath.row - 1].productImage
             cell.itemName.text = cartItems.productList[indexPath.row - 1].productName
             cell.itemPrice.text = cartItems.productList[indexPath.row - 1].productPrice
-        
+            
+            switch cell.itemName.text {
+            case "A11y Bot":
+                cell.itemImage.image = #imageLiteral(resourceName: "a11y (1)")
+            case "Customer Bot":
+                cell.itemImage.image = #imageLiteral(resourceName: "customer-bot (1)")
+            case "Bug Bot":
+                cell.itemImage.image = #imageLiteral(resourceName: "bug-bot (1)")
+            case "Success Bot":
+                cell.itemImage.image = #imageLiteral(resourceName: "bot-thank-you")
+            case "Test Bot":
+                cell.itemImage.image = #imageLiteral(resourceName: "infrastructure-bot (1)")
+            case "Mesmer Bot":
+                cell.itemImage.image = #imageLiteral(resourceName: "Mesmer Robot Emoji customer 2")
+            default:
+                print("Error")
+            }
+            
+            //cell.itemImage.image = cartItems.productList[indexPath.row - 1].productImage
+            
             var singleItemPrice = cartItems.productList[indexPath.row - 1].productPrice
             
             singleItemPrice.remove(at: singleItemPrice.startIndex)
             print(singleItemPrice)
+            
+            for i in cartItems.productQty{
+                print("This the qty in cartItems: \(i)")
+            }
             
             let itemPriceCalcuated = String(format: "%.2f",  Double(singleItemPrice)! * Double(cartItems.productList[indexPath.row - 1].qty))
             cell.itemPrice.text = "$\(itemPriceCalcuated)"
@@ -118,6 +140,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             //cartItems.totalCount = cartItems.totalCount - cartItems.productList[indexPath.row - 1].qty
             cartItems.productList.remove(at: indexPath.row - 1)
             cartItems.listofProducts.remove(at: indexPath.row - 1)
+            cartItems.productQty.remove(at: indexPath.row - 1)
+            cartItems.productPrice.remove(at: indexPath.row - 1)
             cartItems.findTotalCount()
             
             

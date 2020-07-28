@@ -29,6 +29,8 @@ class SingleItemViewController: UIViewController {
     @IBOutlet weak var cartCountNum: UILabel!
     
     @IBOutlet weak var Button: UIButton!
+    
+    let defaults = UserDefaults.standard
 
 
     //@IBOutlet weak var space: UILabel!
@@ -87,24 +89,38 @@ class SingleItemViewController: UIViewController {
     }
     
     func addingToCart(){
+
+        defaults.set(true, forKey: keys.cartEdited)
+
         // Check if item is already in cart
         if !cartItems.listofProducts.contains(singleItemName.text!) {
-            cartItems.productList.append(cartList(productName: singleItemName.text!, productImage: singleItemImage.image!, productPrice: singleItemPrice.text!, qty: 1))
+
+            cartItems.productList.append(cartList(productName: singleItemName.text!, productPrice: singleItemPrice.text!, qty: 1))
             cartItems.listofProducts.append(singleItemName.text!)
+            cartItems.productQty.append(1)
+            cartItems.productPrice.append(singleItemPrice.text!)
+            
         }
             
         // If item is already in cart, then add 1 to its' qty
         else {
             let itemIndex = cartItems.listofProducts.firstIndex(of: singleItemName.text!)!
             cartItems.productList[itemIndex].qty += 1
+            cartItems.productQty[itemIndex] += 1
+            
         }
-        /*
-        var items = 0
-        for i in cartItems.productList{
-            items += i.qty
-        }
- */
+        
+        // Setting user defaults
+        
+
         cartItems.findTotalCount()
+        
+        defaults.set(cartItems.totalCount, forKey: keys.totalCount)
+        defaults.set(cartItems.listofProducts, forKey: keys.listofProducts)
+        defaults.set(cartItems.productQty, forKey: keys.productQty)
+        defaults.set(cartItems.productPrice, forKey: keys.price)
+        
+        
         
         //cartItems.totalCount = items
         if cartItems.totalCount == 1 {
