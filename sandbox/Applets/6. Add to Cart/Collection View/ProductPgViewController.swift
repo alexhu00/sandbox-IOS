@@ -32,16 +32,16 @@ class ProductPgViewController: UIViewController, UICollectionViewDataSource, UIC
     ]
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return productList.count
+        return self.productList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as! ProductCollectionViewCell
         
-        cell.itemImage.image = productList[indexPath.row].productImage
+        cell.itemImage.image = self.productList[indexPath.row].productImage
         //cell.itemImage.image = #imageLiteral(resourceName: "bug-bot (1)")
-        cell.itemName.text = productList[indexPath.row].productName
-        cell.itemPrice.text = productList[indexPath.row].productPrice
+        cell.itemName.text = self.productList[indexPath.row].productName
+        cell.itemPrice.text = self.productList[indexPath.row].productPrice
         
         cell.contentView.layer.cornerRadius = 10.0
         cell.contentView.layer.borderWidth = 1.0
@@ -94,14 +94,29 @@ class ProductPgViewController: UIViewController, UICollectionViewDataSource, UIC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "viewItem" {
             let destinationVC = segue.destination as! SingleItemViewController
-            destinationVC.image = productList[index].productImage
-            destinationVC.name = productList[index].productName
-            destinationVC.price = productList[index].productPrice
-            destinationVC.productText = productList[index].description
+            //destinationVC.image = productList[index].productImage
+            destinationVC.name = self.productList[index].productName
+            destinationVC.price = self.productList[index].productPrice
+            destinationVC.productText = self.productList[index].description
+            switch productList[index].productName {
+            case "A11y Bot":
+                destinationVC.image = #imageLiteral(resourceName: "a11y (1)")
+            case "Customer Bot":
+                destinationVC.image = #imageLiteral(resourceName: "customer-bot (1)")
+            case "Bug Bot":
+                destinationVC.image = #imageLiteral(resourceName: "bug-bot (1)")
+            case "Success Bot":
+                destinationVC.image = #imageLiteral(resourceName: "bot-thank-you")
+            case "Test Bot":
+                destinationVC.image = #imageLiteral(resourceName: "infrastructure-bot (1)")
+            case "Mesmer Bot":
+                destinationVC.image = #imageLiteral(resourceName: "Mesmer Robot Emoji customer 2")
+            default:
+                print("Error")
+            }
         }
     }
   
-    
     @IBAction func viewCart(_ sender: UIButton) {
         performSegue(withIdentifier: "viewCartfromHomepg", sender: self)
     }
@@ -111,6 +126,8 @@ class ProductPgViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var cartCountNum: UILabel!
     
     @IBOutlet weak var items: UICollectionView!
+    
+    let defaults = UserDefaults.standard
     
     var visualDiffs = false
     
@@ -124,20 +141,81 @@ class ProductPgViewController: UIViewController, UICollectionViewDataSource, UIC
         
         visualDiffs = settings.visualDiffsOn
         if (visualDiffs){
-            productList[3].productImage = #imageLiteral(resourceName: "bot-hooray")
+            self.productList[3].productImage = #imageLiteral(resourceName: "bot-hooray")
         }
         else{
-            productList[3].productImage = #imageLiteral(resourceName: "bot-thank-you")
+            self.productList[3].productImage = #imageLiteral(resourceName: "bot-thank-you")
+        }
+    
+        print(!defaults.bool(forKey: keys.cartEdited))
+        if (!defaults.bool(forKey: keys.cartEdited)){
+            cartItems.listofProducts = []
+            cartItems.totalCount = 0
+            cartItems.productList = []
+            cartItems.productPrice = []
+            cartItems.productQty = []
+            print(defaults.integer(forKey: keys.totalCount))
         }
         
+        else{
+            print("Edited was changed and else statements were run!!!")
+            cartItems.listofProducts = defaults.stringArray(forKey: keys.listofProducts)!
+            cartItems.totalCount = defaults.integer(forKey: keys.totalCount)
+            cartItems.productPrice = defaults.stringArray(forKey: keys.price)!
+            cartItems.productQty = defaults.array(forKey:keys.productQty)! as! [Int]
+            //cartItems.productList = defaults.object(forKey: keys.productList) as! [cartList]
+         
+            cartItems.productList = []
+            
+            for i in 0...(cartItems.listofProducts.count - 1){
+
+                print( "This is the qty from the home page!  \(defaults.array(forKey:keys.productQty)![i] as! Int)")
+                let a = cartList(
+                    productName: defaults.stringArray(forKey: keys.listofProducts)![i],
+                    productPrice: defaults.stringArray(forKey: keys.price)![i],
+                    qty: defaults.array(forKey:keys.productQty)![i] as! Int
+                )
+                cartItems.productList.append(a)
+            }
+        
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         //self.cartCount.isHidden = cartItems.cartCountHidden
         self.cartCount.isHidden = false
         self.cartCountNum.text = String(cartItems.totalCount)
+        
+        
+        // Updating defaults
+        
+        defaults.set(cartItems.totalCount, forKey: keys.totalCount)
+        defaults.set(cartItems.listofProducts, forKey: keys.listofProducts)
+        defaults.set(cartItems.productQty, forKey: keys.productQty)
+        defaults.set(cartItems.productPrice, forKey: keys.price)
+        
+        if (defaults.bool(forKey: keys.cartEdited)) {
+            // (cartItems.listofProducts.count - 1) > 0
+            cartItems.productList = []
+            for i in 0...(cartItems.listofProducts.count - 1){
+            print("View Appeared thing was run!!!")
+                print( "This is the qty from the home page!  \(defaults.array(forKey:keys.productQty)![i] as! Int)")
+                let a = cartList(
+                    productName: defaults.stringArray(forKey: keys.listofProducts)![i],
+                    productPrice: defaults.stringArray(forKey: keys.price)![i],
+                    qty: defaults.array(forKey:keys.productQty)![i] as! Int
+                )
+                cartItems.productList.append(a)
+            }
+            for i in 0...(cartItems.listofProducts.count - 1){
+                print("CART INFORMATION")
+                print("\(cartItems.productList[i].productName)")
+                print("\(cartItems.productList[i].qty)")
+                print("\(cartItems.productList[i].productPrice)")
+            }
+        }
+
     }
-    
 }
 
 /*

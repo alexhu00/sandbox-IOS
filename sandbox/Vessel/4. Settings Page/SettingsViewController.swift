@@ -14,7 +14,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     let settingsArray = ["Logout", "Accessibility Mode", "Entitlement Alerts", "Reset App Data"]
     
-    let toggles = ["Accessibility Mode", "Visual Differences"]
+    let toggles = ["Accessibility Violations", "Visual Differences"]
     
     let actions = ["Logout", "Reset App Data"]
 
@@ -129,8 +129,10 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         cartItems.totalCount = 0
         
         // Clearing slider values
-        initialBrightnessValue = 0.5
-        initialValue = 0.5
+        let defaults = UserDefaults.standard
+        defaults.set(false, forKey: keys.volumeChanged)
+        defaults.set(false, forKey: keys.brightChanged)
+
     }
     
     // Confirmation Alert for clearing data

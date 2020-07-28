@@ -72,7 +72,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEv-qq-0Ee">
-                                <rect key="frame" x="54.333333333333336" y="426.66666666666669" width="19.000000000000007" height="19"/>
+                                <rect key="frame" x="53" y="426.66666666666669" width="19" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="19" id="fkT-Yl-d0F"/>
                                     <constraint firstAttribute="height" constant="19" id="mZa-Tv-9CL"/>
@@ -91,7 +91,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I agree to the Mesmer Terms of Service and Privacy Policy" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hy6-nJ-15p">
-                                <rect key="frame" x="86.666666666666671" y="430.66666666666669" width="231.66666666666663" height="11"/>
+                                <rect key="frame" x="85.333333333333329" y="430.66666666666669" width="234.33333333333337" height="11"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="9"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1056,7 +1056,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment was made!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwm-ML-UqE">
-                                <rect key="frame" x="61" y="439.66666666666669" width="253" height="33"/>
+                                <rect key="frame" x="60.333333333333329" y="439.66666666666669" width="254.33333333333337" height="33"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2820,7 +2820,7 @@ These Terms will be governed by and interpreted in accordance with the laws of t
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VjL-Gk-fOr">
-                                                <rect key="frame" x="167" y="389" width="68" height="23"/>
+                                                <rect key="frame" x="167" y="389" width="67" height="23"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="9"/>
                                                 <state key="normal" title="Terms of Service"/>
                                                 <connections>

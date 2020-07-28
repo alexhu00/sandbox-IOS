@@ -8,18 +8,20 @@
 
 import UIKit
 
-struct cartList{
+struct cartList: Codable {
     var productName : String
-    var productImage : UIImage
     var productPrice : String
     var qty: Int
 }
+
 
 struct cartItems {
     static var productList: [cartList] = []
     static var listofProducts : [String] = []
     static var cartCountHidden = true
     static var totalCount = 0
+    static var productQty: [Int] = []
+    static var productPrice: [String] = []
     
     static func findTotalCount(){
         totalCount = 0
