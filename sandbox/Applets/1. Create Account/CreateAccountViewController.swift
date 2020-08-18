@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Analytics
 
 protocol accountDelegate {
     func accountInfo(u: String, p: String)
@@ -35,6 +36,8 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet var collectionOfLabels:[UILabel]!
+    
+    @IBOutlet var collectionOfTitleLabels:[UILabel]!
     
     @IBOutlet weak var termsOfService: UIButton!
     
@@ -99,6 +102,13 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         setCheckboxContrainsts()
         setLinkContrainsts()
         correctA11y = false  // for the error messages
+        username.placeholder = "Username"
+        password.placeholder = "Password"
+        confirmPassword.placeholder = "Confirm Password"
+        collectionOfTitleLabels[0].isHidden = true
+        collectionOfTitleLabels[1].isHidden = true
+        collectionOfTitleLabels[2].isHidden = true
+
         print("a11y false")
     }
 
@@ -124,12 +134,6 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         //checkBox.leadingAnchor.constraint(equalTo: self.agree.leadingAnchor, constant: 245).isActive = true
     }
     
-    // Allow user to dimiss keyboard by clicking return
-    func textFieldShouldReturn(_ textfield: UITextField) -> Bool{
-        textfield.resignFirstResponder()
-        return true
-    }
-    
     // Checkbox tapped action
     @IBAction func checkBoxTapped(_ sender: UIButton) {
         if sender.isSelected{
@@ -140,6 +144,12 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
             sender.isSelected = true
             termsAgreed = true
         }
+    }
+    
+    // Allow user to dimiss keyboard by clicking return
+    func textFieldShouldReturn(_ textfield: UITextField) -> Bool{
+        textfield.resignFirstResponder()
+        return true
     }
     
     // Validate email
@@ -157,9 +167,18 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
                 if (isValidEmail(input: username.text!) && password.text?.count ?? 0 >= 6 && password.text == confirmPassword.text){
                     performSegue(withIdentifier: "createAccount", sender: self)
                     print("yeet")
+                    Analytics.shared().track("1: Account Created", properties: [
+                        "username": username.text!,
+                        "password": password.text!
+                    ])
+                    
                 }
                 else {
                     createErrorMsg()
+                    Analytics.shared().track("1: Invalid Info While Creating Account", properties: [
+                         "username": username.text!,
+                         "password": password.text!
+                     ])
                 }
             }
             else{
@@ -245,19 +264,3 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
 }
 
-
-/*
- 
- func setTermsContrainsts() {
-     termsOfService.translatesAutoresizingMaskIntoConstraints = false
-     termsOfService.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 125).isActive = true
- }
- 
- 
-       UIView.transition(with: errorMsg,
-                         duration: 5.0,
-                             options: [.transitionCrossDissolve],
-                             animations: {
-                               self.errorMsg.text = "Pleae enter a username and password"
-       }, completion: nil)
-*/

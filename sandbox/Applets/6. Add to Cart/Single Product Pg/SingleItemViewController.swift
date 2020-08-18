@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Analytics
 
 class SingleItemViewController: UIViewController {
 
@@ -52,7 +53,6 @@ class SingleItemViewController: UIViewController {
         productDescription.text = productText
         productDescription.sizeToFit()
         cardView.layer.cornerRadius = 10
-        //contentView.bottomAnchor.constraint(equalTo: productDescription.bottomAnchor, constant: -100).isActive = true
         createButton()
         cartCountNum.text = String(cartItems.totalCount)
         cartCount.isHidden = false
@@ -89,7 +89,8 @@ class SingleItemViewController: UIViewController {
     }
     
     func addingToCart(){
-
+        Analytics.shared().track("6: \(self.singleItemName.text) Added to Cart")
+    
         defaults.set(true, forKey: keys.cartEdited)
 
         // Check if item is already in cart
@@ -99,7 +100,6 @@ class SingleItemViewController: UIViewController {
             cartItems.listofProducts.append(singleItemName.text!)
             cartItems.productQty.append(1)
             cartItems.productPrice.append(singleItemPrice.text!)
-            
         }
             
         // If item is already in cart, then add 1 to its' qty
@@ -111,8 +111,6 @@ class SingleItemViewController: UIViewController {
         }
         
         // Setting user defaults
-        
-
         cartItems.findTotalCount()
         
         defaults.set(cartItems.totalCount, forKey: keys.totalCount)
@@ -120,32 +118,28 @@ class SingleItemViewController: UIViewController {
         defaults.set(cartItems.productQty, forKey: keys.productQty)
         defaults.set(cartItems.productPrice, forKey: keys.price)
         
-        
-        
-        //cartItems.totalCount = items
+        // Animation for the cart icon, for the first item
         if cartItems.totalCount == 1 {
-            cartItems.cartCountHidden = false
+            //cartItems.cartCountHidden = false
+            cartItems.cartCountHidden = true
             cartCountNum.text = String(cartItems.totalCount)
             UIView.transition(with: cartCount, duration: 0.4,
                 options: .transitionFlipFromLeft,
                 animations: {
-                    self.cartCount.isHidden = cartItems.cartCountHidden})
+                    self.cartCount.isHidden = false
+                    //self.cartCount.isHidden = cartItems.cartCountHidden
+            })
         }
+        // Animation for the cart icon
         else{
             cartCountNum.text = String(cartItems.totalCount)
-            //cartCountNum.isHidden = true
-            //UILabel.transition(with: cartCountNum, duration: 1.0, options: .transitionFlipFromLeft, animations: {
-            //self.cartCountNum.isHidden = false}, completion: nil)
-            
-            self.cartCount.isHidden = !cartItems.cartCountHidden
+
+            self.cartCount.isHidden = true
             UIView.transition(with: cartCount, duration: 0.4, options: .transitionFlipFromLeft, animations: {
-                self.cartCount.isHidden = cartItems.cartCountHidden
+                //self.cartCount.isHidden = cartItems.cartCountHidden
+                self.cartCount.isHidden = false
             }, completion: nil)
         }
-        print(cartItems.totalCount)
-
-        //cartItems.productList.append(product(productName: singleItemName.text!, productImage: singleItemImage.image!, productPrice: singleItemPrice.text!, description: ""))
-        print(cartItems.productList.count)
     }
     
     func createButton(){
@@ -165,34 +159,5 @@ class SingleItemViewController: UIViewController {
         Button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         Button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         Button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        //Button.centerYAnchor.constraint(equalTo: self.agree.bottomAnchor, constant: 50).isActive = true
     }
 }
-
-/*
- 
- let contentRect: CGRect = scrollView.subviews.reduce(into: .zero) { rect, view in rect = rect.union(view.frame)}
- 
- scrollView.contentSize = contentRect.size
- 
- scrollView.translatesAutoresizingMaskIntoConstraints = false
-
- scrollView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
- scrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
- scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
- 
- 
- contentView.translatesAutoresizingMaskIntoConstraints = false
-
- contentView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
- contentView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
- contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
- 
- //contentView.bottomAnchor.CON
-
- 
- 
- 
-
- 
- */

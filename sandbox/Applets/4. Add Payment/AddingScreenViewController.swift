@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Analytics
 
 protocol creditCardDelegate{
     func changePayment(cardNum: String)
@@ -49,22 +50,15 @@ class AddingScreenViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //cardholderName.set
         mmyy.delegate = self
         cardNumber.delegate = self
         createButton()
-        //cardDelegate = AddPaymentViewController().self
         cardholderName.delegate = self
         cardNumber.delegate = self
         mmyy.delegate = self
         cvv.delegate = self
-        //cvvisInt = cvv.text!.isInt
-        //mmyyIsInt = mmyy.text!.istInt
-        //var mmyyString = mmyy.text!
         m = Int(mmyy.text!.prefix(3)) ?? 25
-        //print(m)
-        //m = Int(mmyy.text!.suffix(2)) ?? 20
-        
+
         if (a11y){
             setA11yViolations()
         }
@@ -86,8 +80,6 @@ class AddingScreenViewController: UIViewController, UITextFieldDelegate {
         print("a11y false")
     }
     
-    
-    
     // MARK: Functions
     
     // Clicking the save information button
@@ -108,19 +100,26 @@ class AddingScreenViewController: UIViewController, UITextFieldDelegate {
         let input = String(saved2)
         cardDelegate?.changePayment(cardNum: input)
         dismiss(animated: true, completion: nil)
+        Analytics.shared().track("4: Payment Added", properties: [
+            "cardholderName": cardholderName.text!,
+            "cardNumber": cardNumber.text!,
+            "mmyy": mmyy.text!,
+            "cvv": cvv.text!,
+        ])
+
         print("ran dimissal \n")
     }
     
     // Creating Error Message Depending on the Specific Error
     func createErrorMsg(){
-        //Button.isHidden = true
-        //errorMsg.titleLabel? = "Pleae enter a username and password"
-        //var mm =
         
-        print("this is yuh \(m)")
-        
-        print(cvv.text!.isInt)
-        
+        Analytics.shared().track("4: Invalid Payment", properties: [
+            "cardholderName": cardholderName.text!,
+            "cardNumber": cardNumber.text!,
+            "mmyy": mmyy.text!,
+            "cvv": cvv.text!,
+        ])
+
         errorMsg.font = UIFont(name: "Roboto-Bold", size: 12.0)
     
         if (cardholderName.text == "" || cardNumber.text == "" || mmyy.text == "" || cvv.text == "" ){
@@ -153,7 +152,6 @@ class AddingScreenViewController: UIViewController, UITextFieldDelegate {
         errorMsg.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         errorMsg.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         errorMsg.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        //errorMsg.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 700).isActive = true
         errorMsg.centerYAnchor.constraint(equalTo: self.Button.bottomAnchor, constant: 50).isActive = true
     }
     
@@ -200,7 +198,7 @@ class AddingScreenViewController: UIViewController, UITextFieldDelegate {
             return count <= 3
         }
         return true
-       }
+    }
 
     // Turn inputted string (from Card Number Text Field) to an integer
     func stringtoInt(input: String){
@@ -211,8 +209,6 @@ class AddingScreenViewController: UIViewController, UITextFieldDelegate {
     // Card Number Text Field Action to turn string into integer
     @IBAction func cardNum(_ sender: UITextField) {
         stringtoInt(input: sender.text ?? "0")
-        //print(sender.text)
-        //sender.text = self.modifyCreditCardString(creditCardString: sender.text!)
     }
     
     // Dismiss modal
@@ -239,7 +235,6 @@ class AddingScreenViewController: UIViewController, UITextFieldDelegate {
         Button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         Button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         Button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        //Button.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 630).isActive = true
     }
 }
 
@@ -250,35 +245,3 @@ extension String {
     }
 }
 
-
-//let vc = storyboard!.instantiateViewController(withIdentifier: "AddPaymentViewController") as! AddPaymentViewController
-//let vc = AddPaymentViewController()
-//performSegue(withIdentifier: "createAccount", sender: self)
-
-/*
-        UIView.transition(with: errorMsg,
-                          duration: 5.0,
-                              options: [.transitionCrossDissolve],
-                              animations: {
-                                self.errorMsg.text = "Pleae enter a username and password"
-        }, completion: nil)
- */
-
-/*
- func modifyCreditCardString(creditCardString : String) -> String {
-     let trimmedString = creditCardString.components(separatedBy: .whitespaces).joined()
-
-     let arrOfCharacters = Array(trimmedString)
-     var modifiedCreditCardString = ""
-
-     if(arrOfCharacters.count > 0) {
-         for i in 0...arrOfCharacters.count-1 {
-             modifiedCreditCardString.append(arrOfCharacters[i])
-             if((i+1) % 4 == 0 && i+1 != arrOfCharacters.count){
-                 modifiedCreditCardString.append(" ")
-             }
-         }
-     }
-     return modifiedCreditCardString
- }
- */

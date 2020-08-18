@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Analytics
 
 weak var vc = CartViewController()
 
@@ -81,8 +82,6 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print("Error")
             }
             
-            //cell.itemImage.image = cartItems.productList[indexPath.row - 1].productImage
-            
             var singleItemPrice = cartItems.productList[indexPath.row - 1].productPrice
             
             singleItemPrice.remove(at: singleItemPrice.startIndex)
@@ -137,34 +136,20 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     // Removing Items
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            //cartItems.totalCount = cartItems.totalCount - cartItems.productList[indexPath.row - 1].qty
+            Analytics.shared().track("6: \(cartItems.productList[indexPath.row - 1]) Item Removed Using Swipe")
+            
             cartItems.productList.remove(at: indexPath.row - 1)
             cartItems.listofProducts.remove(at: indexPath.row - 1)
             cartItems.productQty.remove(at: indexPath.row - 1)
             cartItems.productPrice.remove(at: indexPath.row - 1)
             cartItems.findTotalCount()
             
-            
-            print("plusminus is: \(plusMinusPrice)")
-            
-            //removingCellDelegate.removingUpdate()
-            
-            
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.endUpdates()
             
-            /*
-            let vc = HeaderCartTableViewCell()
-            var num = 0
-            for i in cartItems.productList{
-                num += i.qty
-            }
-            vc.itemCount.text = String(num)
-            */
             totalPrice = 0.00
             self.table.reloadData()
-            //HeaderCartTableViewCell.reloadData
             headerDelegate.update()
         }
     }

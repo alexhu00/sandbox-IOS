@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Analytics
 
 struct product {
     var productName : String
@@ -65,36 +66,21 @@ class ProductPgViewController: UIViewController, UICollectionViewDataSource, UIC
         return cell
     }
     
-    
+    // Variable to keep track of which item was pressed
     var index: Int = 1
-
-    /*
-    @objc func tap(_ sender: UITapGestureRecognizer) {
-
-        let location = sender.location(in: self.items)
-        let indexPath = self.items.indexPathForItem(at: location)
-        //index = indexPath?.row as! Int
-        performSegue(withIdentifier: "viewItem", sender: self)
-
-       if let index = indexPath {
-          print("Got clicked on index: \(index)!")
-       }
-    }
-    
-    */
-
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         index = indexPath.row
         //collectionView.index
-        
         performSegue(withIdentifier: "viewItem", sender: self)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "viewItem" {
+
+            Analytics.shared().track("6: \(self.productList[index].productName) Clicked")
+            
             let destinationVC = segue.destination as! SingleItemViewController
-            //destinationVC.image = productList[index].productImage
             destinationVC.name = self.productList[index].productName
             destinationVC.price = self.productList[index].productPrice
             destinationVC.productText = self.productList[index].description
@@ -147,7 +133,8 @@ class ProductPgViewController: UIViewController, UICollectionViewDataSource, UIC
             self.productList[3].productImage = #imageLiteral(resourceName: "bot-thank-you")
         }
     
-        print(!defaults.bool(forKey: keys.cartEdited))
+        print(defaults.bool(forKey: keys.cartEdited))
+        let defaults = UserDefaults.standard
         if (!defaults.bool(forKey: keys.cartEdited)){
             cartItems.listofProducts = []
             cartItems.totalCount = 0
@@ -163,21 +150,20 @@ class ProductPgViewController: UIViewController, UICollectionViewDataSource, UIC
             cartItems.totalCount = defaults.integer(forKey: keys.totalCount)
             cartItems.productPrice = defaults.stringArray(forKey: keys.price)!
             cartItems.productQty = defaults.array(forKey:keys.productQty)! as! [Int]
-            //cartItems.productList = defaults.object(forKey: keys.productList) as! [cartList]
-         
+
             cartItems.productList = []
             
-            for i in 0...(cartItems.listofProducts.count - 1){
-
-                print( "This is the qty from the home page!  \(defaults.array(forKey:keys.productQty)![i] as! Int)")
-                let a = cartList(
-                    productName: defaults.stringArray(forKey: keys.listofProducts)![i],
-                    productPrice: defaults.stringArray(forKey: keys.price)![i],
-                    qty: defaults.array(forKey:keys.productQty)![i] as! Int
-                )
-                cartItems.productList.append(a)
+            if cartItems.listofProducts.count != 0{
+                for i in 0...(cartItems.listofProducts.count - 1){
+                    print( "This is the qty from the home page!  \(defaults.array(forKey:keys.productQty)![i] as! Int)")
+                    let a = cartList(
+                        productName: defaults.stringArray(forKey: keys.listofProducts)![i],
+                        productPrice: defaults.stringArray(forKey: keys.price)![i],
+                        qty: defaults.array(forKey:keys.productQty)![i] as! Int
+                    )
+                    cartItems.productList.append(a)
+                }
             }
-        
         }
     }
     
@@ -194,25 +180,26 @@ class ProductPgViewController: UIViewController, UICollectionViewDataSource, UIC
         defaults.set(cartItems.productQty, forKey: keys.productQty)
         defaults.set(cartItems.productPrice, forKey: keys.price)
         
-        if (defaults.bool(forKey: keys.cartEdited)) {
-            // (cartItems.listofProducts.count - 1) > 0
-            cartItems.productList = []
+        
+        cartItems.productList = []
+        
+        if cartItems.listofProducts.count != 0{
             for i in 0...(cartItems.listofProducts.count - 1){
-            print("View Appeared thing was run!!!")
-                print( "This is the qty from the home page!  \(defaults.array(forKey:keys.productQty)![i] as! Int)")
-                let a = cartList(
-                    productName: defaults.stringArray(forKey: keys.listofProducts)![i],
-                    productPrice: defaults.stringArray(forKey: keys.price)![i],
-                    qty: defaults.array(forKey:keys.productQty)![i] as! Int
-                )
-                cartItems.productList.append(a)
-            }
-            for i in 0...(cartItems.listofProducts.count - 1){
-                print("CART INFORMATION")
-                print("\(cartItems.productList[i].productName)")
-                print("\(cartItems.productList[i].qty)")
-                print("\(cartItems.productList[i].productPrice)")
-            }
+             print("View Appeared thing was run!!!")
+                 print( "This is the qty from the home page!  \(defaults.array(forKey:keys.productQty)![i] as! Int)")
+                 let a = cartList(
+                     productName: defaults.stringArray(forKey: keys.listofProducts)![i],
+                     productPrice: defaults.stringArray(forKey: keys.price)![i],
+                     qty: defaults.array(forKey:keys.productQty)![i] as! Int
+                 )
+                 cartItems.productList.append(a)
+             }
+             for i in 0...(cartItems.listofProducts.count - 1){
+                 print("CART INFORMATION")
+                 print("\(cartItems.productList[i].productName)")
+                 print("\(cartItems.productList[i].qty)")
+                 print("\(cartItems.productList[i].productPrice)")
+             }
         }
 
     }

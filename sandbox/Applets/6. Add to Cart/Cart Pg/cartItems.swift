@@ -22,6 +22,7 @@ struct cartItems {
     static var totalCount = 0
     static var productQty: [Int] = []
     static var productPrice: [String] = []
+    //static var edited = false
     
     static func findTotalCount(){
         totalCount = 0

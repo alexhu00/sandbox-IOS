@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Analytics
 
 struct applet {
     var appletName : String
@@ -18,33 +19,40 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
 
     // MARK: Properties
     
-    let section = ["E-Commerce", "UI Elements", "Entitlements"] // add "Content later
+    let section = ["E-Commerce", "UI Elements", "Entitlements", "Complex Interactions"]
 
-    var applets : [applet] = [
+    var ecommerceApplets : [applet] = [
         applet(appletName: "Create Account", appletIcon: #imageLiteral(resourceName: "Icon Path"), segue: "applet1"),
         applet(appletName: "Login", appletIcon: #imageLiteral(resourceName: "icons8-enter-30.png"), segue: "applet7"),
         applet(appletName: "Add Credit Card", appletIcon: #imageLiteral(resourceName: "icons8-credit-card-30"), segue: "applet2"),
         applet(appletName: "Add to Cart", appletIcon: #imageLiteral(resourceName: "supermarket (2)"), segue: "applet6"),
-        applet(appletName: "Account Settings", appletIcon: #imageLiteral(resourceName: "Icon Shape"), segue: "applet8"),
-        applet(appletName: "Rating Stars", appletIcon: #imageLiteral(resourceName: "icons8-star-50 (1)"), segue: "applet10")
+        applet(appletName: "Account Settings", appletIcon: #imageLiteral(resourceName: "icons8-settings-50"), segue: "applet8"),
+        applet(appletName: "Rating Stars", appletIcon: #imageLiteral(resourceName: "icons8-star-50 (1)"), segue: "applet10"),
+        applet(appletName: "Checkout", appletIcon: #imageLiteral(resourceName: "icons8-truck-30"), segue: "applet16")
     ]
 
     var UIapplets : [applet] = [
         applet(appletName: "Explore Sliders", appletIcon: #imageLiteral(resourceName: "icons8-slider-30"), segue: "applet3"),
-    ]
-
-    var contentApplets : [applet] = [
-        applet(appletName: "Create Account", appletIcon: #imageLiteral(resourceName: "Combined Shape"), segue: "applet1"),
-        applet(appletName: "Add to Cart", appletIcon: #imageLiteral(resourceName: "supermarket (2)"), segue: "applet2"),
+        applet(appletName: "Data Table", appletIcon: #imageLiteral(resourceName: "icons8-data-grid-30"), segue: "applet17"),
+        applet(appletName: "Radio Buttons", appletIcon: #imageLiteral(resourceName: "radio-button-checked-1780884-1514128"), segue: "applet18")
     ]
 
     var entitlementsApplets : [applet] = [
         applet(appletName: "Open Camera", appletIcon: #imageLiteral(resourceName: "icons8-camera-30"), segue: "applet4"),
         applet(appletName: "Location", appletIcon: #imageLiteral(resourceName: "icons8-marker-31"), segue: "applet5"),
-        applet(appletName: "Access Contacts", appletIcon: #imageLiteral(resourceName: "icons8-bookmark-30"), segue: "applet9")
+        applet(appletName: "Access Contacts", appletIcon: #imageLiteral(resourceName: "icons8-bookmark-30"), segue: "applet9"),
+        applet(appletName: "Biometric ID", appletIcon: #imageLiteral(resourceName: "icons8-fingerprint-accepted-30"), segue: "applet12"),
+        applet(appletName: "Storage Access", appletIcon: #imageLiteral(resourceName: "icons8-folder-30"), segue: "applet19")
     ]
     
-    lazy var appletsFullList = [applets, UIapplets, entitlementsApplets] // add contentApplets later
+    var ComplexInteractions: [applet] = [
+        applet(appletName: "Security Questions", appletIcon: #imageLiteral(resourceName: "icons8-lock-30"), segue: "applet11"),
+        applet(appletName: "Device Rotation", appletIcon: #imageLiteral(resourceName: "icons8-rotation-30"), segue: "applet13"),
+        applet(appletName: "External App Link", appletIcon: #imageLiteral(resourceName: "icons8-external-link-50"), segue: "applet14"),
+        applet(appletName: "Video Player", appletIcon: #imageLiteral(resourceName: "icons8-play-button-circled-30"), segue: "applet15")
+    ]
+    
+    lazy var appletsFullList = [ecommerceApplets, UIapplets, entitlementsApplets, ComplexInteractions]
 
     @IBOutlet weak var List: UITableView!
     
@@ -68,6 +76,8 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
     
     var searchEntitlemnts = [applet]()
     
+    var searchComplexInteractions = [applet]()
+    
     var a11y = false
     
     var visualDiffs = false
@@ -88,6 +98,7 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
         self.navigationController?.view.backgroundColor = .clear
         setA11yCorrect()
         //self.tab
+        Analytics.shared().screen("Vessel Home Screen")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -115,19 +126,12 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
         List.reloadData()
         self.tabBarItem.image = #imageLiteral(resourceName: "homeCombined Shape")
         self.tabBarItem.selectedImage = #imageLiteral(resourceName: "homeCombined Shape")
-        /*
-        homeIcon.image = #imageLiteral(resourceName: "icons8-bookmark-30")
-        homeIcon.selectedImage = #imageLiteral(resourceName: "icons8-bookmark-30")
- */
     }
+    
     func originalVisual(){
         headerMesmerLogo.image = #imageLiteral(resourceName: "Screen Shot 2020-06-30 at 3.32.58 PM")
         appletsFullList[0][3].appletIcon = #imageLiteral(resourceName: "supermarket (2)")
         List.reloadData()
-        /*
-        homeIcon.image = #imageLiteral(resourceName: "homeCombined Shape")
-        homeIcon.selectedImage = #imageLiteral(resourceName: "homeCombined Shape")
-    */
     }
     
     // Setting Correct a11y Features
@@ -212,6 +216,7 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
     // What Happens After Clicking on a Row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: appletsFullList[indexPath.section][indexPath.row].segue, sender: self)
+        Analytics.shared().track("\(appletsFullList[indexPath.section][indexPath.row].appletName) Applet Selected")
     }
     
     // Unwind Function
@@ -225,94 +230,93 @@ class VesselViewController: UIViewController, UITableViewDataSource, UITableView
 extension VesselViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         //searchApplet = appletsFullList.filter({$0.applet.appletName.lowercased().prefix(searchText.count) == searchText.lowercased()})
-        searchApplets = applets.filter({$0.appletName.lowercased().prefix(searchText.count) == searchText.lowercased()})
+        searchApplets = ecommerceApplets.filter({$0.appletName.lowercased().prefix(searchText.count) == searchText.lowercased()})
         searchUIApplets = UIapplets.filter({$0.appletName.lowercased().prefix(searchText.count) == searchText.lowercased()})
         searchEntitlemnts = entitlementsApplets.filter({$0.appletName.lowercased().prefix(searchText.count) == searchText.lowercased()})
+        searchComplexInteractions = ComplexInteractions.filter({$0.appletName.lowercased().prefix(searchText.count) == searchText.lowercased()})
             //entitlementsApplets.filter({$0.appletName.lowercased().contains(searchText.lowercased())})
         
         for i in searchApplets{
             print(i.appletName)
         }
-        /*
-        if(searchApplets.count != 0){
-            searchApplet.append(searchApplets)
-            sectionSearch.append("E-Commerce")
-        }
-        if(searchUIApplets.count != 0){
-            searchApplet.append(searchUIApplets)
-            sectionSearch.append("UI Elements")
-        }
-        if(searchEntitlemnts.count != 0){
-            searchApplet.append(searchEntitlemnts)
-            sectionSearch.append("Entitlements")
-        }
- */
-        searchApplet = [searchApplets, searchUIApplets, searchEntitlemnts]
-        sectionSearch = ["E-Commerce", "UI Elements", "Entitlements"]
 
+        
+        // 4 results (4 choose 4)
+        searchApplet = [searchApplets, searchUIApplets, searchEntitlemnts, searchComplexInteractions]
+        sectionSearch = ["E-Commerce", "UI Elements", "Entitlements", "Complex Interactions"]
+
+        
+        //  3 results (4 choose 3)
         if (searchApplets.count == 0) {
-            searchApplet = [searchUIApplets, searchEntitlemnts]
-            sectionSearch = ["UI Elements", "Entitlements"]
+            searchApplet = [searchUIApplets, searchEntitlemnts, searchComplexInteractions]
+            sectionSearch = ["UI Elements", "Entitlements", "Complex Interactions"]
         }
         if (searchUIApplets.count == 0) {
-            searchApplet = [searchApplets, searchEntitlemnts]
-            sectionSearch = ["E-Commerce", "Entitlements"]
+            searchApplet = [searchApplets, searchEntitlemnts, searchComplexInteractions]
+            sectionSearch = ["E-Commerce", "Entitlements", "Complex Interactions"]
         }
         if (searchEntitlemnts.count == 0) {
+            searchApplet = [searchApplets, searchUIApplets, searchComplexInteractions]
+            sectionSearch = ["E-Commerce", "UI Elements", "Complex Interactions"]
+        }
+        if (searchComplexInteractions.count == 0) {
+            searchApplet = [searchApplets, searchUIApplets, searchEntitlemnts]
+            sectionSearch = ["E-Commerce", "UI Elements", "Entitlements"]
+        }
+    
+        // 2 results (4 choose 2)
+        if (searchUIApplets.count == 0 && searchEntitlemnts.count == 0) {
+            searchApplet = [searchApplets, searchComplexInteractions]
+            sectionSearch = ["E-Commerce", "Complex Interactions"]
+        }
+        if (searchEntitlemnts.count == 0 && searchComplexInteractions.count == 0) {
             searchApplet = [searchApplets, searchUIApplets]
             sectionSearch = ["E-Commerce", "UI Elements"]
         }
+        if (searchComplexInteractions.count == 0 && searchUIApplets.count == 0) {
+            searchApplet = [searchApplets, searchEntitlemnts]
+            sectionSearch = ["E-Commerce", "Entitlements"]
+        }
         if (searchApplets.count == 0 && searchUIApplets.count == 0) {
+            searchApplet = [searchEntitlemnts, searchComplexInteractions]
+            sectionSearch = ["Entitlements", "Complex Interactions"]
+        }
+        if (searchApplets.count == 0 && searchComplexInteractions.count == 0 ) {
+            searchApplet = [searchEntitlemnts, searchUIApplets]
+            sectionSearch = ["Entitlements", "UI Elements"]
+        }
+        if (searchApplets.count == 0 && searchEntitlemnts.count == 0 ) {
+            searchApplet = [searchUIApplets, searchComplexInteractions]
+            sectionSearch = ["UI Elements", "Complex Interactions"]
+        }
+        
+        
+        // 1 Result (4 choose 1)
+        if (searchApplets.count == 0 && searchUIApplets.count == 0 && searchComplexInteractions.count == 0) {
             searchApplet = [searchEntitlemnts]
             sectionSearch = ["Entitlements"]
         }
-        if (searchEntitlemnts.count == 0 && searchUIApplets.count == 0) {
+        if (searchEntitlemnts.count == 0 && searchUIApplets.count == 0 && searchComplexInteractions.count == 0) {
             searchApplet = [searchApplets]
             sectionSearch = ["E-Commerce"]
         }
-        if (searchApplets.count == 0 && searchEntitlemnts.count == 0) {
+        if (searchApplets.count == 0 && searchEntitlemnts.count == 0 && searchComplexInteractions.count == 0) {
             searchApplet = [searchUIApplets]
             sectionSearch = ["UI Elements"]
         }
         if (searchApplets.count == 0 && searchEntitlemnts.count == 0 && searchUIApplets.count == 0) {
+            searchApplet = [searchComplexInteractions]
+            sectionSearch = ["Complex Interactions"]
+        }
+        
+        // No results (4 choose 0)
+        if (searchApplets.count == 0 && searchEntitlemnts.count == 0 && searchUIApplets.count == 0 && searchComplexInteractions.count == 0) {
             searchApplet = []
             sectionSearch = []
         }
-        
-        //searchApplet = [searchApplets, searchUIApplets, searchEntitlemnts]
+
         searching = true
         List.reloadData()
     }
 }
 
-/*
- 
- func createAppletList(){
-     applets.append(applet(appletName: "Create Account", appletIcon: #imageLiteral(resourceName: "Screen Shot 2020-06-24 at 12.46.40 PM"), segue: "applet1"))
-     applets.append(applet(appletName: "Add to Cart", appletIcon: #imageLiteral(resourceName: "Screen Shot 2020-06-24 at 12.46.40 PM"), segue: "applet2"))
-     applets.append(applet(appletName: "Manage Cart", appletIcon: #imageLiteral(resourceName: "Screen Shot 2020-06-24 at 12.46.40 PM"), segue: "applet3"))
-     applets.append(applet(appletName: "Manage Cart", appletIcon: #imageLiteral(resourceName: "Screen Shot 2020-06-24 at 12.46.40 PM"), segue: "applet4"))
-     
- }
-     
- 
- 
- 
- 
- 
- 
- func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-     return applets.count
- }
- 
- func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "appletCell", for: indexPath)
-
-     cell.textLabel!.text = applets[indexPath.row]
-     
-     //cell.imageView!.image = UIImage(named: "CreateAccountIcon")
-     
-     return cell
- }
- 
- */

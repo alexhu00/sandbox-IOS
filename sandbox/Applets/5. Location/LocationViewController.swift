@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Analytics
 
 class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
@@ -80,47 +81,9 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     @IBAction func showLocation(_ sender: UIButton) {
+        Analytics.shared().track("5: Show Location Button Pressed")
         checkLocationServices()
         regionHasBeenCentered = regionHasBeenCentered && false
     }
     
 }
-
-/*
- 
- func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-     if mapView.region.span.latitudeDelta <= 40 && mapView.region.span.longitudeDelta <= 40 {
-          let minimumSpan = MKCoordinateSpan(latitudeDelta: 40, longitudeDelta: 40)
-         let minimumRegion = MKCoordinateRegion(center: mapView.centerCoordinate, span: minimumSpan)
-          mapView.setRegion(minimumRegion, animated: false)
-     }
- }
- 
- if CLLocationManager.locationServicesEnabled() == true{
-     if CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .denied || CLLocationManager.authorizationStatus() == .notDetermined {
-         locationManager.requestWhenInUseAuthorization()
-     }
-     locationManager.desiredAccuracy = 1.0
-     locationManager.delegate = self
-     locationManager.startUpdatingLocation()
- }
- else{
-     print("turn on location")
- }
- 
- 
- // MARK: Delegate Funcs
- 
- func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-     let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
-     self.map.setRegion(region, animated: true)
- }
- 
- func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-     print("unable to access location")
- }
-
- 
- 
- 
- */

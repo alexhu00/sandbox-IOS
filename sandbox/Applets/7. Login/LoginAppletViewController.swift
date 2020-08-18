@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Analytics
 
 class LoginAppletViewController: UIViewController, UITextFieldDelegate {
     
@@ -38,6 +39,7 @@ class LoginAppletViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginPress(_ sender: UIButton) {
         if (username.text == hardcodeUsername && password.text == hardcodePassword){
             performSegue(withIdentifier: "successfulLogin", sender: self)
+            Analytics.shared().track("7: Successful Login")
         }
         else{
             createErrorMsg()
@@ -46,7 +48,6 @@ class LoginAppletViewController: UIViewController, UITextFieldDelegate {
     
     
     func createButton(){
-        //Button.isHidden = true
         button.backgroundColor = UIColor.init(displayP3Red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
         button.layer.cornerRadius = 25.0
         button.setTitle("Continue", for: .normal)
@@ -61,7 +62,6 @@ class LoginAppletViewController: UIViewController, UITextFieldDelegate {
         button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        //button.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 450).isActive = true
     }
     
     func createErrorMsg(){

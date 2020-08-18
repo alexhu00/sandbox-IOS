@@ -8,6 +8,7 @@
 
 import UIKit
 import ContactsUI
+import Analytics
 
 
 class contactsViewController: UIViewController, CNContactPickerDelegate {
@@ -20,6 +21,7 @@ class contactsViewController: UIViewController, CNContactPickerDelegate {
         let contactPicker = CNContactPickerViewController()
         contactPicker.delegate = self
         self.present(contactPicker, animated: true, completion: nil)
+        Analytics.shared().track("9: Contacts Button Pressed")
     }
     
 }
