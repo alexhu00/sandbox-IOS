@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Analytics
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -46,6 +47,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         print("woohoo")
         if (username.text == inputU && password.text == inputP){
             performSegue(withIdentifier: "successScreen", sender: self)
+            Analytics.shared().track("1: Login Successful", properties: [
+                "username": username.text!,
+                "password": password.text!
+            ])
         }
         else{
             createErrorMsg()
@@ -94,39 +99,3 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
-
-/*
-@objc func buttonClicked(sender: UIButton){
-    print("yay")
-}
- */
-
-   /*
-    print("failed")
-    print(username.text)
-    print(inputU)
-    print(password.text)
-    print(inputP)
-    
-    
-    
-   func accountInfo(u: String, p: String) {
-       print(u)
-       print(p)
-       username.text = u
-       password.text = p
-   }
-*/
-
-/*
-extension LoginViewController: accountDelegate {
-    func accountInfo(u: String, p: String) {
-        print("delegate ran!")
-        //pword.text = p
-        //delegateInput = u
-        //password.text = p
-    }
-    
-}
-
-*/

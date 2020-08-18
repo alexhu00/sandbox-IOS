@@ -5,7 +5,7 @@
 //  Created by Alex  Hu on 2020-07-20.
 //  Copyright © 2020 Alex  Hu. All rights reserved.
 //
-
+/*
 import UIKit
 
 class TabBarViewController: UITabBarController {
@@ -14,8 +14,6 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //visualDifferences()
     }
     
     func viewWillDissapear(_ animated: Bool) {
@@ -53,3 +51,5 @@ class TabBarViewController: UITabBarController {
     }
     
 }
+
+ */

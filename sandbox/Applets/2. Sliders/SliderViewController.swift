@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Analytics
 
 class SliderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
@@ -23,6 +24,8 @@ class SliderViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func moveSlider(_ sender: UISlider) {
         let currentValue = Int(sender.value*100)
         volumeLabel.text = "\(currentValue)"
+        Analytics.shared().track("2: Volume Slider Changed", properties:  ["value": Int(sender.value*100)
+        ])
         
         // Save values into User Defaults
         let defaults = UserDefaults.standard
@@ -35,6 +38,8 @@ class SliderViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func moveSlider2(_ sender: UISlider) {
         let currentValue = Int(sender.value*100)
         brightnessLabel.text = "\(currentValue)"
+        Analytics.shared().track("2: Brightness Slider Changed", properties:  ["value": Int(sender.value*100)
+         ])
         
         // Save values into User Defaults
         let defaults = UserDefaults.standard

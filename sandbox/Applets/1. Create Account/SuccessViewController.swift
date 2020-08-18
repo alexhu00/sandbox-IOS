@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Analytics
 
 class SuccessViewController: UIViewController {
     
@@ -20,6 +21,7 @@ class SuccessViewController: UIViewController {
     
     @IBAction func exitApplet(_ sender: UIButton) {
         performSegue(withIdentifier: "unwindToHome", sender: self)
+        Analytics.shared().track("1: Applet Exited")
     }
     
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Analytics
 
 class visualDiffsTableViewCell: UITableViewCell {
 
@@ -24,6 +25,12 @@ class visualDiffsTableViewCell: UITableViewCell {
 
     @IBAction func visualDiffsToggle(_ sender: UISwitch) {
         settings.visualDiffsOn = toggle.isOn
+        if toggle.isOn == true{
+            Analytics.shared().track("User turned on visual differences")
+        }
+        else{
+            Analytics.shared().track("User turned off visual differences")
+        }
     }
     
 }

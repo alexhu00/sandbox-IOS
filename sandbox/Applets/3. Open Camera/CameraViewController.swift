@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Analytics
 
 class CameraViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -28,6 +29,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         createAlert()
     }
     
+    // Function to Open Camera
     func cameraOpens(){
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             print("is available")
@@ -36,9 +38,11 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
             imagePicker.sourceType = .camera;
             imagePicker.allowsEditing = false
             self.present(imagePicker, animated: true, completion: nil)
+            Analytics.shared().track("3: Camera Opened")
         }
     }
     
+    // Function to Allow Picture Taken from Camera to be Chosen
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imagePicked.contentMode = .scaleAspectFit
@@ -47,6 +51,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         picker.dismiss(animated: true, completion: nil)
     }
     
+    // Alert Confirming if User Wants to Open Camera
     func createAlert() {
         let alert = UIAlertController(title: "Camera Access", message: "Mesmer would like to access your camera", preferredStyle: UIAlertController.Style.alert)
         
@@ -63,32 +68,3 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         
     }
 }
-
-
-/*
-    switch AVCaptureDevice.authorizationStatus(for: .video) {
-        case .authorized: // The user has previously granted access to the camera.
-            self.setupCaptureSession()
-        
-        case .notDetermined: // The user has not yet been asked for camera access.
-            AVCaptureDevice.requestAccess(for: .video) { granted in
-                if granted {
-                    self.setupCaptureSession()
-                }
-            }
-        
-        case .denied: // The user has previously denied access.
-            return
-
-        case .restricted: // The user can't grant access due to restrictions.
-            return
-    }
-    
-    
-   private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-       let image = info[UIImagePickerController.InfoKey.originalImage.rawValue] as! UIImage
-       imagePicked.image = image
-       dismiss(animated:true, completion: nil)
-   }
-
-*/

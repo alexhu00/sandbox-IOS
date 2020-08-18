@@ -6,8 +6,23 @@
 	<dict>
 		<key>sandbox.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>A2F3978824A13B25008F3607</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A2F3979E24A13B2C008F3607</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

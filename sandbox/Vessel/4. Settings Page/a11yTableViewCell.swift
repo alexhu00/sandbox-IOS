@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Analytics
 
 class a11yTableViewCell: UITableViewCell {
     
@@ -19,7 +20,7 @@ class a11yTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        a11yToggle.isOn = false
+        a11yToggle.isOn = settings.a11yIsOn
         // Initialization code
     }
 
@@ -30,6 +31,13 @@ class a11yTableViewCell: UITableViewCell {
     @IBAction func a11yToggleTouched(_ sender: UISwitch) {
         print("touched!")
         settings.a11yIsOn = a11yToggle.isOn
+        if a11yToggle.isOn == true{
+            Analytics.shared().track("User turned on a11y violations")
+        }
+        else{
+            Analytics.shared().track("User turned off a11y violations")
+        }
+        
     }
 }
 

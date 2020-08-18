@@ -17,11 +17,17 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>1.1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) camera use</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Allow Mesmer to authenticate using FaceID</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your current location will be displayed on the map and used for directions, nearby search results, and estimated travel times.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allows you to set photo</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Chivo-Regular.ttf</string>
@@ -75,7 +81,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Your current location will be displayed on the map and used for directions, nearby search results, and estimated travel times.</string>
 </dict>
 </plist>

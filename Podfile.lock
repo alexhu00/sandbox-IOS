@@ -1,0 +1,22 @@
+PODS:
+  - Analytics (4.0.4)
+
+DEPENDENCIES:
+  - Analytics (from `https://github.com/segmentio/analytics-ios.git`, branch `master`)
+
+EXTERNAL SOURCES:
+  Analytics:
+    :branch: master
+    :git: https://github.com/segmentio/analytics-ios.git
+
+CHECKOUT OPTIONS:
+  Analytics:
+    :commit: 34d00fffa438f7a8419740fb1b3dbfd92ea408f7
+    :git: https://github.com/segmentio/analytics-ios.git
+
+SPEC CHECKSUMS:
+  Analytics: 231b01fdaa9704105881dc82def7b7b1d6571edb
+
+PODFILE CHECKSUM: 3e939b611f4a71d8baebe2873c29b55d80f45d4d
+
+COCOAPODS: 1.9.2

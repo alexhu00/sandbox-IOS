@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Analytics
 
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -96,6 +97,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         // Logout
         if(indexPath.section == 0 && indexPath.row == 0){
             performSegue(withIdentifier: "logout", sender: self)
+            Analytics.shared().track("User logged out of app")
         }
         // Clearing Data
         if(indexPath.section == 0 && indexPath.row == 1){
@@ -114,12 +116,14 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             self.clearData()
             print("alert confirmed")
             alert.dismiss(animated:true, completion:nil)
+            
         }))
         self.present(alert, animated:true, completion:nil)
     }
     
     // Function to clear data
     func clearData(){
+        Analytics.shared().track("User reset app data")
         print("data cleared!")
         createConfirmationAlert()
         
@@ -127,9 +131,10 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         cartItems.productList = []
         cartItems.listofProducts = []
         cartItems.totalCount = 0
+        let defaults = UserDefaults.standard
+        defaults.set(false, forKey: keys.cartEdited)
         
         // Clearing slider values
-        let defaults = UserDefaults.standard
         defaults.set(false, forKey: keys.volumeChanged)
         defaults.set(false, forKey: keys.brightChanged)
 

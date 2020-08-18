@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Analytics
 
 class AddPaymentViewController: UIViewController {
     
@@ -48,14 +49,13 @@ class AddPaymentViewController: UIViewController {
     }
     
     func showActionSheet() {
+        Analytics.shared().track("4: Action Sheet Shown")
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let option1 = UIAlertAction(title: "Add Payment Method", style: .default) { action in
             let selectionVC = self.storyboard!.instantiateViewController(withIdentifier: "AddingScreenViewController") as! AddingScreenViewController
             selectionVC.cardDelegate = self
             self.present(selectionVC, animated: true, completion: nil)
-            //self.performSegue(withIdentifier: "addPayment", sender: self)
-            
         }
         //let option3 = UIAlertAction(title: "Option", style: .default, handler: performSegue(withIdentifier: "addPayment", sender: self))
         let option2 = UIAlertAction(title: "Use Saved Method", style: .default, handler: nil)

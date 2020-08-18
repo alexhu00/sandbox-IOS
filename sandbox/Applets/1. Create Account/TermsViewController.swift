@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Analytics
 
 class TermsViewController: UIViewController {
 
@@ -15,10 +16,11 @@ class TermsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delaysContentTouches = false
+        Analytics.shared().track("1: Terms and Conditions Viewed")
     }
 
     @IBAction func dismiss(_ sender: UIButton) {
-        
+        Analytics.shared().track("1: Terms and Conditions Dismissed")
         dismiss(animated: true, completion: nil)
     }
 }

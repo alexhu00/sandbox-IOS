@@ -6,6 +6,8 @@
 //  Copyright © 2020 Alex  Hu. All rights reserved.
 //
 
+/*
+
 import UIKit
 
 class NavViewController: UINavigationController, UINavigationControllerDelegate {
@@ -22,3 +24,5 @@ class NavViewController: UINavigationController, UINavigationControllerDelegate 
           return false
     }
 }
+
+ */

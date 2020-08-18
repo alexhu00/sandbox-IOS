@@ -11,6 +11,7 @@ import UIKit
 weak var hvc = HeaderCartTableViewCell()
 
 class HeaderCartTableViewCell: UITableViewCell, update, update2 {
+    // Defining delegate method for when item qty is changed via button pressing in the ItemListTableViewCell
     func update2() {
         UIView.transition(with: self.itemCount, duration: 0.5, options: .transitionCrossDissolve, animations: {
             
@@ -20,6 +21,7 @@ class HeaderCartTableViewCell: UITableViewCell, update, update2 {
         }, completion: nil)
     }
     
+    // Defining delegate method for when entire item is removed via swiping in the CartViewController
     func update() {
         UIView.transition(with: self.itemCount, duration: 0.5, options: .transitionCrossDissolve, animations: {
             
